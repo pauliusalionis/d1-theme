@@ -54,6 +54,7 @@
     /* Layout */
     --container-width: 70rem;
     --section-padding-y: clamp(3rem, 5vw, 5rem);
+    --gutter: 1rem;
 
     /* Radius & shadows */
     --radius-s: 0.375rem;
