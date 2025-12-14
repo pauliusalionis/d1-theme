@@ -49,6 +49,36 @@
             "save_options": 0
         },
         {
+            "key": "field_693e071dd0088",
+            "label": "Header layout",
+            "name": "header_layout",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "full-width": "Full width",
+                "boxed": "Boxed",
+                "boxed-wide": "Boxed wide"
+            },
+            "default_value": "boxed-wide",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
             "key": "field_d1_header_menu_position",
             "label": "Menu Position",
             "name": "header_menu_position",
@@ -508,10 +538,10 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "hide_on_screen": [],
+    "hide_on_screen": "",
     "active": true,
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1765657048
+    "modified": 1765672995
 }
