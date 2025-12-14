@@ -32,6 +32,23 @@ function d1_enqueue_assets() {
         D1_VERSION
     );
 
+    // Swiper CSS (for slider blocks)
+    wp_enqueue_style(
+        'swiper',
+        'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css',
+        array(),
+        '11.0.0'
+    );
+
+    // Swiper JS (for slider blocks)
+    wp_enqueue_script(
+        'swiper',
+        'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js',
+        array(),
+        '11.0.0',
+        true
+    );
+
     // Main JS
     wp_enqueue_script(
         'd1-main',

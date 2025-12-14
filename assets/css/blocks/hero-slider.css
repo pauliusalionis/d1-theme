@@ -1,0 +1,367 @@
+/*
+ * Block: Hero - Slider
+ * Uses foundation.css variables and Swiper library
+ *
+ * @package D1
+ */
+
+/* =============================================
+   HERO SLIDER WRAPPER
+   ============================================= */
+
+.hero-slider__wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.hero-slider__swiper {
+    width: 100%;
+    min-height: 60vh;
+}
+
+/* =============================================
+   HERO SLIDER SLIDE
+   ============================================= */
+
+.hero-slider__slide {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: var(--space-8) var(--space-4);
+}
+
+@media (min-width: 768px) {
+    .hero-slider__slide {
+        min-height: 70vh;
+        padding: var(--space-12) var(--space-6);
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-slider__slide {
+        min-height: 80vh;
+    }
+}
+
+/* =============================================
+   SLIDE BACKGROUND IMAGE
+   ============================================= */
+
+.hero-slider__bg {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.hero-slider__bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* Background overlay for better text readability */
+.hero-slider__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.6)
+    );
+}
+
+/* Light overlay for light backgrounds */
+.section--alt .hero-slider__overlay {
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.85),
+        rgba(255, 255, 255, 0.65)
+    );
+}
+
+/* Dark/brand overlays */
+.section--dark .hero-slider__overlay {
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.85),
+        rgba(0, 0, 0, 0.65)
+    );
+}
+
+.section--brand .hero-slider__overlay {
+    background: linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--color-primary) 85%, transparent),
+        color-mix(in srgb, var(--color-primary) 65%, transparent)
+    );
+}
+
+/* =============================================
+   SLIDE CONTENT
+   ============================================= */
+
+.hero-slider__content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    color: var(--color-text-inverted);
+}
+
+/* Content positioning */
+.hero-slider__slide--top .hero-slider__slide {
+    align-items: flex-start;
+}
+
+.hero-slider__slide--center .hero-slider__slide {
+    align-items: center;
+}
+
+.hero-slider__slide--bottom .hero-slider__slide {
+    align-items: flex-end;
+}
+
+/* Text colors on dark backgrounds */
+.hero-slider__slide .heading-group__title,
+.hero-slider__slide .heading-group__eyebrow,
+.hero-slider__slide .heading-group__subtitle,
+.hero-slider__slide .rich-text {
+    color: var(--color-text-inverted);
+}
+
+.hero-slider__slide .heading-group__eyebrow {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-slider__slide .heading-group__subtitle {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* =============================================
+   NAVIGATION ARROWS
+   ============================================= */
+
+.hero-slider__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-m);
+    color: var(--color-text-inverted);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.hero-slider__nav:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.hero-slider__nav:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.hero-slider__nav.swiper-button-disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.hero-slider__nav--prev {
+    left: var(--space-4);
+}
+
+.hero-slider__nav--next {
+    right: var(--space-4);
+}
+
+@media (min-width: 768px) {
+    .hero-slider__nav {
+        width: 56px;
+        height: 56px;
+    }
+
+    .hero-slider__nav--prev {
+        left: var(--space-6);
+    }
+
+    .hero-slider__nav--next {
+        right: var(--space-6);
+    }
+}
+
+/* Hide navigation on mobile if needed */
+@media (max-width: 640px) {
+    .hero-slider__nav {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* =============================================
+   PAGINATION DOTS
+   ============================================= */
+
+.hero-slider__pagination {
+    position: absolute;
+    bottom: var(--space-6);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: var(--space-2);
+}
+
+.hero-slider__pagination :global(.swiper-pagination-bullet) {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: var(--radius-pill);
+    opacity: 1;
+    transition: all var(--transition-base);
+    cursor: pointer;
+}
+
+.hero-slider__pagination :global(.swiper-pagination-bullet:hover) {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.hero-slider__pagination :global(.swiper-pagination-bullet-active) {
+    background: var(--color-text-inverted);
+    width: 24px;
+}
+
+@media (max-width: 640px) {
+    .hero-slider__pagination {
+        bottom: var(--space-4);
+    }
+}
+
+/* =============================================
+   SWIPER TRANSITION EFFECTS
+   ============================================= */
+
+/* Fade effect styles */
+.hero-slider__swiper.swiper-fade .swiper-slide {
+    opacity: 0;
+    transition: opacity 800ms ease-in-out;
+}
+
+.hero-slider__swiper.swiper-fade .swiper-slide-active {
+    opacity: 1;
+}
+
+/* Slide animation enhancement */
+.hero-slider__slide .heading-group,
+.hero-slider__slide .rich-text,
+.hero-slider__slide .cluster {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 600ms ease-out, transform 600ms ease-out;
+}
+
+.swiper-slide-active .heading-group {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 200ms;
+}
+
+.swiper-slide-active .rich-text {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 400ms;
+}
+
+.swiper-slide-active .cluster {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 600ms;
+}
+
+/* =============================================
+   LOADING STATE
+   ============================================= */
+
+.hero-slider__swiper:not(.swiper-initialized) {
+    opacity: 0;
+}
+
+.hero-slider__swiper.swiper-initialized {
+    opacity: 1;
+    transition: opacity 400ms ease-in;
+}
+
+/* =============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================= */
+
+@media (max-width: 640px) {
+    .hero-slider__slide {
+        min-height: 50vh;
+        padding: var(--space-6) var(--space-3);
+    }
+
+    .hero-slider__content {
+        max-width: 100%;
+    }
+
+    /* Smaller text on mobile */
+    .hero-slider__slide .heading-group__title {
+        font-size: var(--fs-2xl);
+    }
+}
+
+/* =============================================
+   ACCESSIBILITY
+   ============================================= */
+
+/* Focus styles for navigation */
+.hero-slider__nav:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+/* Ensure content is readable */
+@media (prefers-reduced-motion: reduce) {
+    .hero-slider__swiper {
+        scroll-behavior: auto;
+    }
+
+    .hero-slider__slide .heading-group,
+    .hero-slider__slide .rich-text,
+    .hero-slider__slide .cluster {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    .hero-slider__swiper.swiper-fade .swiper-slide {
+        transition: none !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .hero-slider__overlay {
+        background: rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-slider__nav {
+        border: 2px solid currentColor;
+    }
+}

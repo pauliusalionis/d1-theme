@@ -29,6 +29,23 @@ function d1_register_acf_blocks() {
         ),
     ) );
 
+    // Hero - Slider
+    acf_register_block_type( array(
+        'name'            => 'hero-slider',
+        'title'           => __( 'Hero - Slider', 'd1' ),
+        'description'     => __( 'Hero slider with multiple slides using Swiper.', 'd1' ),
+        'category'        => 'd1-blocks',
+        'icon'            => 'slides',
+        'keywords'        => array( 'hero', 'slider', 'carousel', 'swiper' ),
+        'render_template' => D1_DIR . '/template-parts/blocks/hero-slider.php',
+        'enqueue_style'   => D1_URI . '/assets/css/blocks/hero-slider.css',
+        'supports'        => array(
+            'align'  => array( 'full', 'wide' ),
+            'anchor' => true,
+            'mode'   => true,
+        ),
+    ) );
+
     // Simple Section
     acf_register_block_type( array(
         'name'            => 'simple-section',
