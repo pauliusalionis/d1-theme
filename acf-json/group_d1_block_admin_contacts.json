@@ -1,0 +1,116 @@
+{
+    "key": "group_d1_block_admin_contacts",
+    "title": "Block: Admin Contacts",
+    "fields": [
+        {
+            "key": "field_d1_admin_contacts_tab_content",
+            "label": "Content",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_d1_admin_contacts_clone_heading",
+            "label": "",
+            "name": "",
+            "type": "clone",
+            "clone": ["group_d1_heading_group"],
+            "display": "seamless",
+            "layout": "block"
+        },
+        {
+            "key": "field_d1_admin_contacts_contacts",
+            "label": "Contacts",
+            "name": "contacts",
+            "type": "repeater",
+            "instructions": "Add admin contact persons.",
+            "layout": "block",
+            "button_label": "Add Contact",
+            "collapsed": "field_d1_admin_contact_name",
+            "sub_fields": [
+                {
+                    "key": "field_d1_admin_contact_image",
+                    "label": "Photo",
+                    "name": "image",
+                    "type": "image",
+                    "return_format": "array",
+                    "preview_size": "thumbnail"
+                },
+                {
+                    "key": "field_d1_admin_contact_name",
+                    "label": "Name",
+                    "name": "name",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": {"width": "50"}
+                },
+                {
+                    "key": "field_d1_admin_contact_position",
+                    "label": "Position",
+                    "name": "position",
+                    "type": "text",
+                    "wrapper": {"width": "50"}
+                },
+                {
+                    "key": "field_d1_admin_contact_description",
+                    "label": "Description",
+                    "name": "description",
+                    "type": "textarea",
+                    "rows": 3
+                },
+                {
+                    "key": "field_d1_admin_contact_email",
+                    "label": "Email",
+                    "name": "email",
+                    "type": "email",
+                    "wrapper": {"width": "50"}
+                },
+                {
+                    "key": "field_d1_admin_contact_phone",
+                    "label": "Phone",
+                    "name": "phone",
+                    "type": "text",
+                    "wrapper": {"width": "50"}
+                }
+            ]
+        },
+        {
+            "key": "field_d1_admin_contacts_columns",
+            "label": "Columns",
+            "name": "columns",
+            "type": "select",
+            "choices": {
+                "2": "2 Columns",
+                "3": "3 Columns",
+                "4": "4 Columns"
+            },
+            "default_value": "3"
+        },
+        {
+            "key": "field_d1_admin_contacts_tab_settings",
+            "label": "Settings",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_d1_admin_contacts_clone_section",
+            "label": "",
+            "name": "",
+            "type": "clone",
+            "clone": ["group_d1_section_settings"],
+            "display": "seamless",
+            "layout": "block"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/admin-contacts"
+            }
+        ]
+    ],
+    "active": true
+}

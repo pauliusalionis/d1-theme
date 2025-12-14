@@ -1,0 +1,96 @@
+{
+    "key": "group_d1_block_cta_contact",
+    "title": "Block: CTA Contact",
+    "fields": [
+        {
+            "key": "field_d1_cta_contact_tab_content",
+            "label": "Content",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_d1_cta_contact_clone_heading",
+            "label": "",
+            "name": "",
+            "type": "clone",
+            "clone": ["group_d1_heading_group"],
+            "display": "seamless",
+            "layout": "block"
+        },
+        {
+            "key": "field_d1_cta_contact_info",
+            "label": "Contact Information",
+            "name": "contact_info",
+            "type": "repeater",
+            "instructions": "Add contact details (phone, email, address, etc.)",
+            "layout": "table",
+            "button_label": "Add Contact Info",
+            "sub_fields": [
+                {
+                    "key": "field_d1_cta_contact_info_icon",
+                    "label": "Icon",
+                    "name": "icon",
+                    "type": "text",
+                    "placeholder": "📧"
+                },
+                {
+                    "key": "field_d1_cta_contact_info_label",
+                    "label": "Label",
+                    "name": "label",
+                    "type": "text",
+                    "placeholder": "Email"
+                },
+                {
+                    "key": "field_d1_cta_contact_info_value",
+                    "label": "Value",
+                    "name": "value",
+                    "type": "text",
+                    "required": 1
+                },
+                {
+                    "key": "field_d1_cta_contact_info_link",
+                    "label": "Link",
+                    "name": "link",
+                    "type": "link",
+                    "return_format": "array"
+                }
+            ]
+        },
+        {
+            "key": "field_d1_cta_contact_clone_buttons",
+            "label": "",
+            "name": "",
+            "type": "clone",
+            "clone": ["group_d1_button_group"],
+            "display": "seamless",
+            "layout": "block"
+        },
+        {
+            "key": "field_d1_cta_contact_tab_settings",
+            "label": "Settings",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_d1_cta_contact_clone_section",
+            "label": "",
+            "name": "",
+            "type": "clone",
+            "clone": ["group_d1_section_settings"],
+            "display": "seamless",
+            "layout": "block"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/cta-contact"
+            }
+        ]
+    ],
+    "active": true
+}

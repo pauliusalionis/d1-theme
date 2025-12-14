@@ -270,6 +270,125 @@ function d1_register_acf_blocks() {
         ),
     ) );
 
+    // Reviews Section
+    acf_register_block_type( array(
+        'name'            => 'reviews-section',
+        'title'           => __( 'Reviews Section', 'd1' ),
+        'description'     => __( 'Display customer reviews and testimonials.', 'd1' ),
+        'category'        => 'd1-blocks',
+        'icon'            => 'star-filled',
+        'keywords'        => array( 'reviews', 'testimonials', 'feedback', 'ratings' ),
+        'render_template' => D1_DIR . '/template-parts/blocks/reviews-section.php',
+        'enqueue_style'   => D1_URI . '/assets/css/blocks/reviews-section.css',
+        'supports'        => array(
+            'align'  => array( 'full', 'wide' ),
+            'anchor' => true,
+            'mode'   => true,
+        ),
+    ) );
+
+    // Jobs Section
+    acf_register_block_type( array(
+        'name'            => 'jobs-section',
+        'title'           => __( 'Jobs Section', 'd1' ),
+        'description'     => __( 'Display job listings and career opportunities.', 'd1' ),
+        'category'        => 'd1-blocks',
+        'icon'            => 'portfolio',
+        'keywords'        => array( 'jobs', 'careers', 'hiring', 'employment' ),
+        'render_template' => D1_DIR . '/template-parts/blocks/jobs-section.php',
+        'enqueue_style'   => D1_URI . '/assets/css/blocks/jobs-section.css',
+        'supports'        => array(
+            'align'  => array( 'full', 'wide' ),
+            'anchor' => true,
+            'mode'   => true,
+        ),
+    ) );
+
+    // Company Details
+    acf_register_block_type( array(
+        'name'            => 'company-details',
+        'title'           => __( 'Company Details', 'd1' ),
+        'description'     => __( 'Display company information (address, phone, email, etc.).', 'd1' ),
+        'category'        => 'd1-blocks',
+        'icon'            => 'building',
+        'keywords'        => array( 'company', 'contact', 'details', 'info', 'address' ),
+        'render_template' => D1_DIR . '/template-parts/blocks/company-details.php',
+        'enqueue_style'   => D1_URI . '/assets/css/blocks/company-details.css',
+        'supports'        => array(
+            'align'  => array( 'full', 'wide' ),
+            'anchor' => true,
+            'mode'   => true,
+        ),
+    ) );
+
+    // Admin Contacts
+    acf_register_block_type( array(
+        'name'            => 'admin-contacts',
+        'title'           => __( 'Admin Contacts', 'd1' ),
+        'description'     => __( 'Display admin contact persons.', 'd1' ),
+        'category'        => 'd1-blocks',
+        'icon'            => 'businessperson',
+        'keywords'        => array( 'admin', 'contacts', 'team', 'staff' ),
+        'render_template' => D1_DIR . '/template-parts/blocks/admin-contacts.php',
+        'enqueue_style'   => D1_URI . '/assets/css/blocks/admin-contacts.css',
+        'supports'        => array(
+            'align'  => array( 'full', 'wide' ),
+            'anchor' => true,
+            'mode'   => true,
+        ),
+    ) );
+
+    // People Section
+    acf_register_block_type( array(
+        'name'            => 'people-section',
+        'title'           => __( 'People Section', 'd1' ),
+        'description'     => __( 'Display team members with photos and social links.', 'd1' ),
+        'category'        => 'd1-blocks',
+        'icon'            => 'groups',
+        'keywords'        => array( 'people', 'team', 'staff', 'members', 'about' ),
+        'render_template' => D1_DIR . '/template-parts/blocks/people-section.php',
+        'enqueue_style'   => D1_URI . '/assets/css/blocks/people-section.css',
+        'supports'        => array(
+            'align'  => array( 'full', 'wide' ),
+            'anchor' => true,
+            'mode'   => true,
+        ),
+    ) );
+
+    // Text Image Reviews
+    acf_register_block_type( array(
+        'name'            => 'text-image-reviews',
+        'title'           => __( 'Text + Image + Reviews', 'd1' ),
+        'description'     => __( 'Combination of text, image, and customer testimonials.', 'd1' ),
+        'category'        => 'd1-blocks',
+        'icon'            => 'align-pull-left',
+        'keywords'        => array( 'text', 'image', 'reviews', 'testimonials', 'split' ),
+        'render_template' => D1_DIR . '/template-parts/blocks/text-image-reviews.php',
+        'enqueue_style'   => D1_URI . '/assets/css/blocks/text-image-reviews.css',
+        'supports'        => array(
+            'align'  => array( 'full', 'wide' ),
+            'anchor' => true,
+            'mode'   => true,
+        ),
+    ) );
+
+    // CTA Contact
+    acf_register_block_type( array(
+        'name'            => 'cta-contact',
+        'title'           => __( 'CTA - Contact', 'd1' ),
+        'description'     => __( 'Call-to-action section with contact information.', 'd1' ),
+        'category'        => 'd1-blocks',
+        'icon'            => 'phone',
+        'keywords'        => array( 'cta', 'contact', 'call to action', 'phone', 'email' ),
+        'render_template' => D1_DIR . '/template-parts/blocks/cta-contact.php',
+        'enqueue_style'   => D1_URI . '/assets/css/blocks/cta-contact.css',
+        'supports'        => array(
+            'align'  => array( 'full', 'wide' ),
+            'anchor' => true,
+            'mode'   => true,
+        ),
+    ) );
+
     // Shortcode Block
     acf_register_block_type( array(
         'name'            => 'shortcode',

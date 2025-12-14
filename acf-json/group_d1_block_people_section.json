@@ -1,0 +1,140 @@
+{
+    "key": "group_d1_block_people_section",
+    "title": "Block: People Section",
+    "fields": [
+        {
+            "key": "field_d1_people_section_tab_content",
+            "label": "Content",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_d1_people_section_clone_heading",
+            "label": "",
+            "name": "",
+            "type": "clone",
+            "clone": ["group_d1_heading_group"],
+            "display": "seamless",
+            "layout": "block"
+        },
+        {
+            "key": "field_d1_people_section_people",
+            "label": "Team Members",
+            "name": "people",
+            "type": "repeater",
+            "instructions": "Add team members or staff.",
+            "layout": "block",
+            "button_label": "Add Person",
+            "collapsed": "field_d1_person_name",
+            "sub_fields": [
+                {
+                    "key": "field_d1_person_image",
+                    "label": "Photo",
+                    "name": "image",
+                    "type": "image",
+                    "return_format": "array",
+                    "preview_size": "medium"
+                },
+                {
+                    "key": "field_d1_person_name",
+                    "label": "Name",
+                    "name": "name",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": {"width": "50"}
+                },
+                {
+                    "key": "field_d1_person_position",
+                    "label": "Position",
+                    "name": "position",
+                    "type": "text",
+                    "wrapper": {"width": "50"}
+                },
+                {
+                    "key": "field_d1_person_description",
+                    "label": "Bio / Description",
+                    "name": "description",
+                    "type": "textarea",
+                    "rows": 3
+                },
+                {
+                    "key": "field_d1_person_email",
+                    "label": "Email",
+                    "name": "email",
+                    "type": "email",
+                    "wrapper": {"width": "50"}
+                },
+                {
+                    "key": "field_d1_person_phone",
+                    "label": "Phone",
+                    "name": "phone",
+                    "type": "text",
+                    "wrapper": {"width": "50"}
+                },
+                {
+                    "key": "field_d1_person_social",
+                    "label": "Social Links",
+                    "name": "social",
+                    "type": "repeater",
+                    "layout": "table",
+                    "button_label": "Add Social Link",
+                    "sub_fields": [
+                        {
+                            "key": "field_d1_social_platform",
+                            "label": "Platform",
+                            "name": "platform",
+                            "type": "text",
+                            "placeholder": "LinkedIn"
+                        },
+                        {
+                            "key": "field_d1_social_link",
+                            "label": "Link",
+                            "name": "link",
+                            "type": "link",
+                            "return_format": "array"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_d1_people_section_columns",
+            "label": "Columns",
+            "name": "columns",
+            "type": "select",
+            "choices": {
+                "2": "2 Columns",
+                "3": "3 Columns",
+                "4": "4 Columns"
+            },
+            "default_value": "3"
+        },
+        {
+            "key": "field_d1_people_section_tab_settings",
+            "label": "Settings",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_d1_people_section_clone_section",
+            "label": "",
+            "name": "",
+            "type": "clone",
+            "clone": ["group_d1_section_settings"],
+            "display": "seamless",
+            "layout": "block"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/people-section"
+            }
+        ]
+    ],
+    "active": true
+}

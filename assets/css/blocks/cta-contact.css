@@ -1,0 +1,175 @@
+/*
+ * Block: CTA Contact
+ * Call-to-action with contact information
+ */
+
+/* ============================================
+   Layout
+   ============================================ */
+
+.cta-contact__wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+.cta-contact__content {
+	width: 100%;
+}
+
+.cta-contact__info {
+	display: grid;
+	gap: var(--space-4);
+	margin: var(--space-8) 0;
+	grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+	.cta-contact__info {
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	}
+}
+
+/* ============================================
+   Contact Details in CTA
+   ============================================ */
+
+.cta-contact .company-detail {
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	padding: var(--space-5);
+}
+
+.cta-contact .company-detail__icon {
+	font-size: 2.5rem;
+	margin-bottom: var(--space-2);
+}
+
+.cta-contact .company-detail__content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.cta-contact .company-detail__label {
+	color: rgba(255, 255, 255, 0.8);
+}
+
+.cta-contact .company-detail__value {
+	color: white;
+	font-size: var(--fs-lg);
+	font-weight: 600;
+}
+
+.cta-contact .company-detail__value--link {
+	color: white;
+}
+
+.cta-contact .company-detail__value--link:hover {
+	color: white;
+	opacity: 0.9;
+}
+
+.cta-contact .company-detail:hover {
+	transform: translateY(-4px);
+	background: rgba(255, 255, 255, 0.15);
+}
+
+/* ============================================
+   Buttons in CTA Contact
+   ============================================ */
+
+.cta-contact .cluster {
+	margin-top: var(--space-6);
+}
+
+/* Override button styles for dark background */
+.section--brand .btn--primary,
+.section--dark .btn--primary {
+	background: white;
+	color: var(--color-primary);
+}
+
+.section--brand .btn--primary:hover,
+.section--dark .btn--primary:hover {
+	background: rgba(255, 255, 255, 0.9);
+}
+
+.section--brand .btn--ghost,
+.section--dark .btn--ghost {
+	border-color: white;
+	color: white;
+}
+
+.section--brand .btn--ghost:hover,
+.section--dark .btn--ghost:hover {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+.cta-contact__content {
+	opacity: 0;
+	animation: cta-fade-in 0.6s ease-out forwards;
+}
+
+@keyframes cta-fade-in {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.cta-contact__info .company-detail {
+	opacity: 0;
+	animation: detail-pop-in 0.5s ease-out forwards;
+}
+
+.cta-contact__info .company-detail:nth-child(1) { animation-delay: 0.2s; }
+.cta-contact__info .company-detail:nth-child(2) { animation-delay: 0.3s; }
+.cta-contact__info .company-detail:nth-child(3) { animation-delay: 0.4s; }
+.cta-contact__info .company-detail:nth-child(4) { animation-delay: 0.5s; }
+
+@keyframes detail-pop-in {
+	from {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+	.cta-contact__content,
+	.cta-contact__info .company-detail {
+		animation: none !important;
+		opacity: 1;
+	}
+
+	.cta-contact .company-detail:hover {
+		transform: none;
+	}
+}
+
+.cta-contact .company-detail__value--link:focus-visible {
+	outline: 2px solid white;
+	outline-offset: 4px;
+}
