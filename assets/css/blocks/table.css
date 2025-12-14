@@ -1,0 +1,290 @@
+/*
+ * Block: Table
+ * Responsive table with multiple display modes
+ */
+
+/* ============================================
+   Table Wrapper
+   ============================================ */
+
+.table-block__wrapper {
+	width: 100%;
+	margin-top: var(--space-6);
+	opacity: 0;
+	animation: table-fade-in 0.6s ease-out 0.2s forwards;
+}
+
+@keyframes table-fade-in {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Horizontal Scroll Mode (Default) */
+.table-block__wrapper--scroll {
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+/* ============================================
+   Table Base Styles
+   ============================================ */
+
+.table-block__table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size: var(--font-size-base, 1rem);
+	line-height: 1.6;
+}
+
+/* ============================================
+   Table Cells
+   ============================================ */
+
+.table-block__table th,
+.table-block__table td {
+	padding: var(--space-3) var(--space-4);
+	text-align: left;
+	vertical-align: top;
+	border-bottom: 1px solid var(--color-border, #e5e7eb);
+	transition: background-color var(--transition-base);
+}
+
+/* Header Cells */
+.table-block__table th {
+	font-weight: 600;
+	color: var(--color-text, #111827);
+	background-color: var(--color-bg-alt, #f9fafb);
+	border-bottom: 2px solid var(--color-border, #e5e7eb);
+}
+
+/* Data Cells */
+.table-block__table td {
+	color: var(--color-text-muted, #6b7280);
+}
+
+/* First Column (often labels) */
+.table-block__table tbody th {
+	font-weight: 600;
+	color: var(--color-text, #111827);
+	background-color: transparent;
+	border-bottom: 1px solid var(--color-border, #e5e7eb);
+}
+
+/* ============================================
+   Table Styles
+   ============================================ */
+
+/* Striped Rows */
+.table-block--striped .table-block__table tbody tr:nth-child(odd) {
+	background-color: var(--color-bg-alt, #f9fafb);
+}
+
+.table-block--striped .table-block__table tbody tr:hover {
+	background-color: rgba(59, 130, 246, 0.05);
+}
+
+/* Bordered */
+.table-block--bordered .table-block__table th,
+.table-block--bordered .table-block__table td {
+	border: 1px solid var(--color-border, #e5e7eb);
+}
+
+.table-block--bordered .table-block__table {
+	border: 1px solid var(--color-border, #e5e7eb);
+	border-radius: var(--radius-lg, 0.5rem);
+	overflow: hidden;
+}
+
+/* ============================================
+   Hover Effects
+   ============================================ */
+
+.table-block__table tbody tr {
+	transition: background-color var(--transition-base);
+}
+
+.table-block__table tbody tr:hover {
+	background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* ============================================
+   Responsive: Stack Mode
+   ============================================ */
+
+@media (max-width: 767px) {
+	.table-block__wrapper--stack .table-block__table,
+	.table-block__wrapper--stack .table-block__table thead,
+	.table-block__wrapper--stack .table-block__table tbody,
+	.table-block__wrapper--stack .table-block__table tr,
+	.table-block__wrapper--stack .table-block__table th,
+	.table-block__wrapper--stack .table-block__table td {
+		display: block;
+		width: 100%;
+	}
+
+	.table-block__wrapper--stack .table-block__table thead {
+		display: none;
+	}
+
+	.table-block__wrapper--stack .table-block__table tr {
+		margin-bottom: var(--space-4);
+		border: 1px solid var(--color-border, #e5e7eb);
+		border-radius: var(--radius-md, 0.375rem);
+		padding: var(--space-3);
+		background-color: var(--color-bg, #ffffff);
+	}
+
+	.table-block__wrapper--stack .table-block__table td {
+		border: none;
+		border-bottom: 1px solid var(--color-border-light, #f3f4f6);
+		padding: var(--space-2) 0;
+		position: relative;
+		padding-left: 50%;
+	}
+
+	.table-block__wrapper--stack .table-block__table td:last-child {
+		border-bottom: none;
+	}
+
+	.table-block__wrapper--stack .table-block__table td::before {
+		content: attr(data-label);
+		position: absolute;
+		left: 0;
+		width: 45%;
+		padding-right: var(--space-2);
+		font-weight: 600;
+		color: var(--color-text, #111827);
+	}
+
+	/* Striped style doesn't apply in stack mode */
+	.table-block--striped.table-block__wrapper--stack .table-block__table tbody tr:nth-child(odd) {
+		background-color: transparent;
+	}
+}
+
+/* ============================================
+   Responsive: Scroll Mode Indicator
+   ============================================ */
+
+@media (max-width: 767px) {
+	.table-block__wrapper--scroll {
+		position: relative;
+	}
+
+	.table-block__wrapper--scroll::after {
+		content: '→';
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		padding: var(--space-2) var(--space-3);
+		background: linear-gradient(to left, rgba(255, 255, 255, 1) 50%, transparent);
+		pointer-events: none;
+		opacity: 0.5;
+		font-size: 1.5rem;
+		line-height: 1;
+	}
+
+	.table-block__wrapper--scroll::-webkit-scrollbar {
+		height: 8px;
+	}
+
+	.table-block__wrapper--scroll::-webkit-scrollbar-track {
+		background: var(--color-bg-alt, #f9fafb);
+		border-radius: var(--radius-full, 9999px);
+	}
+
+	.table-block__wrapper--scroll::-webkit-scrollbar-thumb {
+		background: var(--color-border, #e5e7eb);
+		border-radius: var(--radius-full, 9999px);
+	}
+
+	.table-block__wrapper--scroll::-webkit-scrollbar-thumb:hover {
+		background: var(--color-text-muted, #6b7280);
+	}
+}
+
+/* ============================================
+   Minimum Column Width
+   ============================================ */
+
+.table-block__wrapper--scroll .table-block__table {
+	min-width: 600px;
+}
+
+/* ============================================
+   Empty State
+   ============================================ */
+
+.table-block__table:empty::after {
+	content: 'No table data available.';
+	display: block;
+	padding: var(--space-8) var(--space-4);
+	text-align: center;
+	color: var(--color-text-muted, #6b7280);
+	font-style: italic;
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+	.table-block__wrapper {
+		animation: none !important;
+		opacity: 1;
+	}
+
+	.table-block__table th,
+	.table-block__table td,
+	.table-block__table tbody tr {
+		transition: none;
+	}
+}
+
+/* Focus States */
+.table-block__table:focus {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 4px;
+}
+
+.table-block__table:focus:not(:focus-visible) {
+	outline: none;
+}
+
+.table-block__table:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 4px;
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+
+@media print {
+	.table-block__wrapper {
+		overflow: visible !important;
+	}
+
+	.table-block__table {
+		min-width: auto !important;
+		border: 1px solid #000;
+	}
+
+	.table-block__table th,
+	.table-block__table td {
+		border: 1px solid #000;
+		padding: 0.5rem;
+	}
+
+	.table-block__table tbody tr:hover {
+		background-color: transparent !important;
+	}
+}
