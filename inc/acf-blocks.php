@@ -114,6 +114,23 @@ function d1_register_acf_blocks() {
         ),
     ) );
 
+    // Feature Cards
+    acf_register_block_type( array(
+        'name'            => 'feature-cards',
+        'title'           => __( 'Feature Cards', 'd1' ),
+        'description'     => __( 'Display feature cards in a grid layout.', 'd1' ),
+        'category'        => 'd1-blocks',
+        'icon'            => 'grid-view',
+        'keywords'        => array( 'cards', 'features', 'grid', 'services' ),
+        'render_template' => D1_DIR . '/template-parts/blocks/feature-cards.php',
+        'enqueue_style'   => D1_URI . '/assets/css/blocks/feature-cards.css',
+        'supports'        => array(
+            'align'  => array( 'full', 'wide' ),
+            'anchor' => true,
+            'mode'   => true,
+        ),
+    ) );
+
     // Shortcode Block
     acf_register_block_type( array(
         'name'            => 'shortcode',
