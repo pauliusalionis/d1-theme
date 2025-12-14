@@ -1,0 +1,202 @@
+/*
+ * Block: Steps Horizontal
+ * Process or timeline display in horizontal layout
+ */
+
+/* ============================================
+   Layout
+   ============================================ */
+
+.steps-horizontal__wrapper {
+	display: grid;
+	gap: var(--space-8);
+	margin-top: var(--space-8);
+	grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+	.steps-horizontal__wrapper {
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	}
+}
+
+/* ============================================
+   Step Component
+   ============================================ */
+
+.step {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	position: relative;
+}
+
+.step__number,
+.step__icon {
+	width: 64px;
+	height: 64px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--color-primary);
+	color: white;
+	font-size: var(--fs-xl);
+	font-weight: 700;
+	border-radius: 50%;
+	margin-bottom: var(--space-4);
+	flex-shrink: 0;
+	transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.step__icon {
+	font-size: var(--fs-2xl);
+	font-weight: 400;
+}
+
+.step__content {
+	width: 100%;
+}
+
+.step__title {
+	font-size: var(--fs-lg);
+	font-weight: 600;
+	margin-bottom: var(--space-2);
+	color: var(--color-text);
+}
+
+.step__description {
+	font-size: var(--fs-base);
+	color: var(--color-text-muted);
+	line-height: 1.6;
+}
+
+/* ============================================
+   Connector Line
+   ============================================ */
+
+.steps-horizontal--connected .step::after {
+	content: '';
+	position: absolute;
+	top: 32px;
+	left: calc(50% + 32px);
+	right: calc(-50% + 32px);
+	height: 2px;
+	background: var(--color-border);
+	z-index: -1;
+}
+
+.steps-horizontal--connected .step:last-child::after {
+	display: none;
+}
+
+@media (max-width: 767px) {
+	.steps-horizontal--connected .step::after {
+		display: none;
+	}
+}
+
+/* ============================================
+   Clickable Steps
+   ============================================ */
+
+a.step {
+	text-decoration: none;
+	color: inherit;
+	cursor: pointer;
+	transition: transform var(--transition-base);
+}
+
+a.step:hover {
+	transform: translateY(-4px);
+}
+
+a.step:hover .step__number,
+a.step:hover .step__icon {
+	transform: scale(1.1);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+a.step:hover .step__title {
+	color: var(--color-primary);
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+.steps-horizontal__wrapper .step {
+	opacity: 0;
+	animation: step-fade-in 0.6s ease-out forwards;
+}
+
+.steps-horizontal__wrapper .step:nth-child(1) { animation-delay: 0.1s; }
+.steps-horizontal__wrapper .step:nth-child(2) { animation-delay: 0.2s; }
+.steps-horizontal__wrapper .step:nth-child(3) { animation-delay: 0.3s; }
+.steps-horizontal__wrapper .step:nth-child(4) { animation-delay: 0.4s; }
+.steps-horizontal__wrapper .step:nth-child(5) { animation-delay: 0.5s; }
+.steps-horizontal__wrapper .step:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes step-fade-in {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Connector Line Animation */
+.steps-horizontal--connected .step::after {
+	transform: scaleX(0);
+	transform-origin: left;
+	animation: connector-grow 0.6s ease-out forwards;
+}
+
+.steps-horizontal--connected .step:nth-child(1)::after { animation-delay: 0.3s; }
+.steps-horizontal--connected .step:nth-child(2)::after { animation-delay: 0.4s; }
+.steps-horizontal--connected .step:nth-child(3)::after { animation-delay: 0.5s; }
+.steps-horizontal--connected .step:nth-child(4)::after { animation-delay: 0.6s; }
+.steps-horizontal--connected .step:nth-child(5)::after { animation-delay: 0.7s; }
+
+@keyframes connector-grow {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
+	}
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+	.steps-horizontal__wrapper .step {
+		animation: none !important;
+		opacity: 1;
+	}
+
+	.steps-horizontal--connected .step::after {
+		animation: none !important;
+		transform: scaleX(1);
+	}
+
+	a.step:hover {
+		transform: none;
+	}
+
+	a.step:hover .step__number,
+	a.step:hover .step__icon {
+		transform: none;
+	}
+}
+
+a.step:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 4px;
+	border-radius: var(--radius-md);
+}

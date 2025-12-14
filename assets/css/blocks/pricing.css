@@ -1,0 +1,315 @@
+/*
+ * Block: Pricing
+ * Pricing tables with optional billing toggle
+ */
+
+/* ============================================
+   Toggle Switch
+   ============================================ */
+
+.pricing-block__toggle {
+	display: flex;
+	justify-content: center;
+	margin-top: var(--space-6);
+	margin-bottom: var(--space-8);
+}
+
+.pricing-toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-3);
+	padding: var(--space-1);
+	background: var(--color-bg-alt);
+	border-radius: 100px;
+	border: none;
+	cursor: pointer;
+	transition: background-color var(--transition-base);
+}
+
+.pricing-toggle:hover {
+	background: var(--color-border);
+}
+
+.pricing-toggle__label {
+	padding: var(--space-2) var(--space-4);
+	font-size: var(--fs-sm);
+	font-weight: 500;
+	color: var(--color-text-muted);
+	border-radius: 100px;
+	transition: all var(--transition-base);
+	white-space: nowrap;
+}
+
+.pricing-toggle__label--active {
+	background: white;
+	color: var(--color-text);
+	box-shadow: var(--shadow-soft);
+}
+
+.pricing-toggle__switch {
+	display: none;
+}
+
+/* ============================================
+   Grid Layout
+   ============================================ */
+
+.pricing-block__grid {
+	display: grid;
+	gap: var(--space-6);
+	margin-top: var(--space-8);
+}
+
+/* 2 Plans */
+.pricing-block__grid--cols-2 {
+	grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+	.pricing-block__grid--cols-2 {
+		grid-template-columns: repeat(2, 1fr);
+		max-width: 900px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+/* 3 Plans (Default) */
+.pricing-block__grid--cols-3 {
+	grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+	.pricing-block__grid--cols-3 {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 1024px) {
+	.pricing-block__grid--cols-3 {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+/* 4 Plans */
+.pricing-block__grid--cols-4 {
+	grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+	.pricing-block__grid--cols-4 {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 1024px) {
+	.pricing-block__grid--cols-4 {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+/* ============================================
+   Pricing Card
+   ============================================ */
+
+.pricing-card {
+	display: flex;
+	flex-direction: column;
+	padding: var(--space-8);
+	background: var(--color-bg-body);
+	border: 2px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	position: relative;
+	transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.pricing-card:hover {
+	transform: translateY(-8px);
+	box-shadow: var(--shadow-medium);
+	border-color: var(--color-primary);
+}
+
+/* Highlighted Plan */
+.pricing-card--highlight {
+	border-color: var(--color-primary);
+	border-width: 3px;
+	box-shadow: 0 0 0 1px var(--color-primary);
+	background: var(--color-bg-body);
+}
+
+.pricing-card--highlight:hover {
+	box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+	transform: translateY(-12px) scale(1.02);
+}
+
+/* Badge */
+.pricing-card__badge {
+	position: absolute;
+	top: var(--space-4);
+	right: var(--space-4);
+	padding: var(--space-1) var(--space-3);
+	background: var(--color-primary);
+	color: white;
+	font-size: var(--fs-xs);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	border-radius: 100px;
+}
+
+/* Header */
+.pricing-card__header {
+	margin-bottom: var(--space-6);
+	padding-bottom: var(--space-6);
+	border-bottom: 1px solid var(--color-border);
+}
+
+.pricing-card__name {
+	font-size: var(--fs-xl);
+	font-weight: 700;
+	margin-bottom: var(--space-2);
+	color: var(--color-text);
+}
+
+.pricing-card__price {
+	display: flex;
+	align-items: baseline;
+	gap: 0.25rem;
+	margin-bottom: var(--space-2);
+}
+
+.pricing-card__amount {
+	font-size: var(--fs-3xl);
+	font-weight: 700;
+	color: var(--color-primary);
+	line-height: 1;
+}
+
+@media (min-width: 768px) {
+	.pricing-card__amount {
+		font-size: 3.5rem;
+	}
+}
+
+.pricing-card__period {
+	font-size: var(--fs-base);
+	color: var(--color-text-muted);
+}
+
+.pricing-card__description {
+	font-size: var(--fs-sm);
+	color: var(--color-text-muted);
+	line-height: 1.5;
+	margin: 0;
+}
+
+/* Features */
+.pricing-card__features {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 var(--space-6);
+	flex: 1;
+}
+
+.pricing-card__feature {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-2);
+	padding: var(--space-2) 0;
+	font-size: var(--fs-base);
+	color: var(--color-text);
+	line-height: 1.6;
+}
+
+.pricing-card__feature-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+	background: var(--color-primary);
+	color: white;
+	font-size: var(--fs-xs);
+	font-weight: 700;
+	border-radius: 50%;
+	flex-shrink: 0;
+	margin-top: 2px;
+}
+
+/* Footer */
+.pricing-card__footer {
+	padding-top: var(--space-6);
+	border-top: 1px solid var(--color-border);
+}
+
+.btn--block {
+	width: 100%;
+	text-align: center;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+.pricing-block__grid .pricing-card {
+	opacity: 0;
+	animation: pricing-fade-in-up 0.6s ease-out forwards;
+}
+
+.pricing-block__grid .pricing-card:nth-child(1) { animation-delay: 0.1s; }
+.pricing-block__grid .pricing-card:nth-child(2) { animation-delay: 0.2s; }
+.pricing-block__grid .pricing-card:nth-child(3) { animation-delay: 0.3s; }
+.pricing-block__grid .pricing-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes pricing-fade-in-up {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Badge pulse */
+.pricing-card__badge {
+	animation: badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+	0%, 100% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.05);
+	}
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+	.pricing-block__grid .pricing-card {
+		animation: none !important;
+		opacity: 1;
+	}
+
+	.pricing-card:hover {
+		transform: none;
+	}
+
+	.pricing-card--highlight:hover {
+		transform: none;
+	}
+
+	.pricing-card__badge {
+		animation: none !important;
+	}
+}
+
+.pricing-toggle:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 4px;
+}

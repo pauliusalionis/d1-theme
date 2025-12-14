@@ -1,0 +1,199 @@
+/*
+ * Block: Steps Vertical
+ * Process or timeline display in vertical layout
+ */
+
+/* ============================================
+   Layout
+   ============================================ */
+
+.steps-vertical__wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-6);
+	margin-top: var(--space-8);
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* ============================================
+   Step Component
+   ============================================ */
+
+.step {
+	display: flex;
+	gap: var(--space-4);
+	align-items: flex-start;
+	position: relative;
+}
+
+.step__number,
+.step__icon {
+	width: 56px;
+	height: 56px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--color-primary);
+	color: white;
+	font-size: var(--fs-lg);
+	font-weight: 700;
+	border-radius: 50%;
+	flex-shrink: 0;
+	transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.step__icon {
+	font-size: var(--fs-xl);
+	font-weight: 400;
+}
+
+.step__content {
+	flex: 1;
+	padding-top: var(--space-2);
+}
+
+.step__title {
+	font-size: var(--fs-xl);
+	font-weight: 600;
+	margin-bottom: var(--space-2);
+	color: var(--color-text);
+}
+
+.step__description {
+	font-size: var(--fs-base);
+	color: var(--color-text-muted);
+	line-height: 1.6;
+}
+
+/* ============================================
+   Connector Line
+   ============================================ */
+
+.steps-vertical--connected .step::after {
+	content: '';
+	position: absolute;
+	top: 56px;
+	left: 27px;
+	bottom: -24px;
+	width: 2px;
+	background: var(--color-border);
+	z-index: -1;
+}
+
+.steps-vertical--connected .step:last-child::after {
+	display: none;
+}
+
+/* ============================================
+   Clickable Steps
+   ============================================ */
+
+a.step {
+	text-decoration: none;
+	color: inherit;
+	cursor: pointer;
+	padding: var(--space-3);
+	margin: calc(var(--space-3) * -1);
+	border-radius: var(--radius-md);
+	transition: background-color var(--transition-base), transform var(--transition-base);
+}
+
+a.step:hover {
+	background-color: var(--color-bg-alt);
+	transform: translateX(4px);
+}
+
+a.step:hover .step__number,
+a.step:hover .step__icon {
+	transform: scale(1.1);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+a.step:hover .step__title {
+	color: var(--color-primary);
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+.steps-vertical__wrapper .step {
+	opacity: 0;
+	animation: step-vertical-slide-in 0.6s ease-out forwards;
+}
+
+.steps-vertical__wrapper .step:nth-child(1) { animation-delay: 0.1s; }
+.steps-vertical__wrapper .step:nth-child(2) { animation-delay: 0.2s; }
+.steps-vertical__wrapper .step:nth-child(3) { animation-delay: 0.3s; }
+.steps-vertical__wrapper .step:nth-child(4) { animation-delay: 0.4s; }
+.steps-vertical__wrapper .step:nth-child(5) { animation-delay: 0.5s; }
+.steps-vertical__wrapper .step:nth-child(6) { animation-delay: 0.6s; }
+.steps-vertical__wrapper .step:nth-child(7) { animation-delay: 0.7s; }
+.steps-vertical__wrapper .step:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes step-vertical-slide-in {
+	from {
+		opacity: 0;
+		transform: translateX(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+/* Connector Line Animation */
+.steps-vertical--connected .step::after {
+	transform: scaleY(0);
+	transform-origin: top;
+	animation: connector-vertical-grow 0.5s ease-out forwards;
+}
+
+.steps-vertical--connected .step:nth-child(1)::after { animation-delay: 0.3s; }
+.steps-vertical--connected .step:nth-child(2)::after { animation-delay: 0.4s; }
+.steps-vertical--connected .step:nth-child(3)::after { animation-delay: 0.5s; }
+.steps-vertical--connected .step:nth-child(4)::after { animation-delay: 0.6s; }
+.steps-vertical--connected .step:nth-child(5)::after { animation-delay: 0.7s; }
+.steps-vertical--connected .step:nth-child(6)::after { animation-delay: 0.8s; }
+.steps-vertical--connected .step:nth-child(7)::after { animation-delay: 0.9s; }
+
+@keyframes connector-vertical-grow {
+	from {
+		transform: scaleY(0);
+	}
+	to {
+		transform: scaleY(1);
+	}
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+	.steps-vertical__wrapper .step {
+		animation: none !important;
+		opacity: 1;
+	}
+
+	.steps-vertical--connected .step::after {
+		animation: none !important;
+		transform: scaleY(1);
+	}
+
+	a.step:hover {
+		transform: none;
+	}
+
+	a.step:hover .step__number,
+	a.step:hover .step__icon {
+		transform: none;
+	}
+}
+
+a.step:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 4px;
+}

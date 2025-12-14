@@ -168,6 +168,108 @@ function d1_register_acf_blocks() {
         ),
     ) );
 
+    // Benefits Grid
+    acf_register_block_type( array(
+        'name'            => 'benefits-grid',
+        'title'           => __( 'Benefits Grid', 'd1' ),
+        'description'     => __( 'Display key benefits in a grid layout.', 'd1' ),
+        'category'        => 'd1-blocks',
+        'icon'            => 'yes-alt',
+        'keywords'        => array( 'benefits', 'advantages', 'grid', 'features' ),
+        'render_template' => D1_DIR . '/template-parts/blocks/benefits-grid.php',
+        'enqueue_style'   => D1_URI . '/assets/css/blocks/benefits-grid.css',
+        'supports'        => array(
+            'align'  => array( 'full', 'wide' ),
+            'anchor' => true,
+            'mode'   => true,
+        ),
+    ) );
+
+    // Steps Horizontal
+    acf_register_block_type( array(
+        'name'            => 'steps-horizontal',
+        'title'           => __( 'Steps - Horizontal', 'd1' ),
+        'description'     => __( 'Display process steps in horizontal layout.', 'd1' ),
+        'category'        => 'd1-blocks',
+        'icon'            => 'list-view',
+        'keywords'        => array( 'steps', 'process', 'timeline', 'horizontal' ),
+        'render_template' => D1_DIR . '/template-parts/blocks/steps-horizontal.php',
+        'enqueue_style'   => D1_URI . '/assets/css/blocks/steps-horizontal.css',
+        'supports'        => array(
+            'align'  => array( 'full', 'wide' ),
+            'anchor' => true,
+            'mode'   => true,
+        ),
+    ) );
+
+    // Steps Vertical
+    acf_register_block_type( array(
+        'name'            => 'steps-vertical',
+        'title'           => __( 'Steps - Vertical', 'd1' ),
+        'description'     => __( 'Display process steps in vertical layout.', 'd1' ),
+        'category'        => 'd1-blocks',
+        'icon'            => 'editor-ol',
+        'keywords'        => array( 'steps', 'process', 'timeline', 'vertical' ),
+        'render_template' => D1_DIR . '/template-parts/blocks/steps-vertical.php',
+        'enqueue_style'   => D1_URI . '/assets/css/blocks/steps-vertical.css',
+        'supports'        => array(
+            'align'  => array( 'full', 'wide' ),
+            'anchor' => true,
+            'mode'   => true,
+        ),
+    ) );
+
+    // Stats Grid
+    acf_register_block_type( array(
+        'name'            => 'stats-grid',
+        'title'           => __( 'Stats Grid', 'd1' ),
+        'description'     => __( 'Display statistics with animated count-up effect.', 'd1' ),
+        'category'        => 'd1-blocks',
+        'icon'            => 'chart-bar',
+        'keywords'        => array( 'stats', 'statistics', 'numbers', 'metrics', 'counter' ),
+        'render_template' => D1_DIR . '/template-parts/blocks/stats-grid.php',
+        'enqueue_style'   => D1_URI . '/assets/css/blocks/stats-grid.css',
+        'supports'        => array(
+            'align'  => array( 'full', 'wide' ),
+            'anchor' => true,
+            'mode'   => true,
+        ),
+    ) );
+
+    // Logos Grid
+    acf_register_block_type( array(
+        'name'            => 'logos-grid',
+        'title'           => __( 'Logos Grid', 'd1' ),
+        'description'     => __( 'Display client, partner, or certification logos.', 'd1' ),
+        'category'        => 'd1-blocks',
+        'icon'            => 'format-gallery',
+        'keywords'        => array( 'logos', 'clients', 'partners', 'brands', 'sponsors' ),
+        'render_template' => D1_DIR . '/template-parts/blocks/logos-grid.php',
+        'enqueue_style'   => D1_URI . '/assets/css/blocks/logos-grid.css',
+        'supports'        => array(
+            'align'  => array( 'full', 'wide' ),
+            'anchor' => true,
+            'mode'   => true,
+        ),
+    ) );
+
+    // Pricing
+    acf_register_block_type( array(
+        'name'            => 'pricing',
+        'title'           => __( 'Pricing', 'd1' ),
+        'description'     => __( 'Display pricing plans with features and CTAs.', 'd1' ),
+        'category'        => 'd1-blocks',
+        'icon'            => 'money-alt',
+        'keywords'        => array( 'pricing', 'plans', 'price', 'subscription', 'payment' ),
+        'render_template' => D1_DIR . '/template-parts/blocks/pricing.php',
+        'enqueue_style'   => D1_URI . '/assets/css/blocks/pricing.css',
+        'supports'        => array(
+            'align'  => array( 'full', 'wide' ),
+            'anchor' => true,
+            'mode'   => true,
+        ),
+    ) );
+
     // Shortcode Block
     acf_register_block_type( array(
         'name'            => 'shortcode',

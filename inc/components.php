@@ -459,3 +459,208 @@ function d1_faq_item( $question = '', $answer = '', $open = false ) {
     </div>
     <?php
 }
+
+/**
+ * Step component
+ *
+ * @param array $args Step settings
+ * @return void
+ */
+function d1_step( $args = array() ) {
+    $defaults = array(
+        'number'      => '',
+        'icon'        => '',
+        'title'       => '',
+        'description' => '',
+        'link'        => null,
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+    if ( ! $args['title'] ) {
+        return;
+    }
+
+    $tag = $args['link'] ? 'a' : 'div';
+    $href = $args['link'] ? ' href="' . esc_url( $args['link']['url'] ) . '"' : '';
+    $target = ( $args['link'] && ! empty( $args['link']['target'] ) ) ? ' target="_blank" rel="noopener"' : '';
+    ?>
+    <<?php echo $tag . $href . $target; ?> class="step">
+        <?php if ( $args['icon'] ) : ?>
+            <div class="step__icon"><?php echo esc_html( $args['icon'] ); ?></div>
+        <?php elseif ( $args['number'] ) : ?>
+            <div class="step__number"><?php echo esc_html( $args['number'] ); ?></div>
+        <?php endif; ?>
+
+        <div class="step__content">
+            <h3 class="step__title"><?php echo esc_html( $args['title'] ); ?></h3>
+            <?php if ( $args['description'] ) : ?>
+                <div class="step__description"><?php echo wp_kses_post( $args['description'] ); ?></div>
+            <?php endif; ?>
+        </div>
+    </<?php echo $tag; ?>>
+    <?php
+}
+
+/**
+ * Stat component
+ *
+ * @param array $args Stat settings
+ * @return void
+ */
+function d1_stat( $args = array() ) {
+    $defaults = array(
+        'number'      => '',
+        'prefix'      => '',
+        'suffix'      => '',
+        'label'       => '',
+        'description' => '',
+        'animate'     => true,
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+    if ( ! $args['number'] && ! $args['label'] ) {
+        return;
+    }
+
+    $stat_class = 'stat';
+    if ( $args['animate'] ) {
+        $stat_class .= ' js-stat';
+    }
+    ?>
+    <div class="<?php echo esc_attr( $stat_class ); ?>">
+        <?php if ( $args['number'] ) : ?>
+            <div class="stat__number" data-value="<?php echo esc_attr( $args['number'] ); ?>">
+                <?php if ( $args['prefix'] ) : ?>
+                    <span class="stat__prefix"><?php echo esc_html( $args['prefix'] ); ?></span>
+                <?php endif; ?>
+                <span class="stat__value"><?php echo esc_html( $args['number'] ); ?></span>
+                <?php if ( $args['suffix'] ) : ?>
+                    <span class="stat__suffix"><?php echo esc_html( $args['suffix'] ); ?></span>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if ( $args['label'] ) : ?>
+            <div class="stat__label"><?php echo esc_html( $args['label'] ); ?></div>
+        <?php endif; ?>
+
+        <?php if ( $args['description'] ) : ?>
+            <div class="stat__description"><?php echo wp_kses_post( $args['description'] ); ?></div>
+        <?php endif; ?>
+    </div>
+    <?php
+}
+
+/**
+ * Logo component
+ *
+ * @param array $args Logo settings
+ * @return void
+ */
+function d1_logo( $args = array() ) {
+    $defaults = array(
+        'image' => null,
+        'name'  => '',
+        'link'  => null,
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+    if ( ! $args['image'] ) {
+        return;
+    }
+
+    $tag = $args['link'] ? 'a' : 'div';
+    $href = $args['link'] ? ' href="' . esc_url( $args['link']['url'] ) . '"' : '';
+    $target = ( $args['link'] && ! empty( $args['link']['target'] ) ) ? ' target="_blank" rel="noopener"' : '';
+    ?>
+    <<?php echo $tag . $href . $target; ?> class="logo-item">
+        <figure class="logo-item__figure">
+            <?php
+            echo wp_get_attachment_image( $args['image']['ID'], 'medium', false, array(
+                'class'   => 'logo-item__image',
+                'alt'     => $args['name'] ? $args['name'] : '',
+                'loading' => 'lazy',
+            ) );
+            ?>
+        </figure>
+    </<?php echo $tag; ?>>
+    <?php
+}
+
+/**
+ * Pricing card component
+ *
+ * @param array $args Pricing card settings
+ * @return void
+ */
+function d1_pricing_card( $args = array() ) {
+    $defaults = array(
+        'name'         => '',
+        'price'        => '',
+        'period'       => '',
+        'description'  => '',
+        'features'     => array(),
+        'button'       => null,
+        'highlight'    => false,
+        'badge'        => '',
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+    if ( ! $args['name'] ) {
+        return;
+    }
+
+    $classes = array( 'pricing-card' );
+    if ( $args['highlight'] ) {
+        $classes[] = 'pricing-card--highlight';
+    }
+    ?>
+    <div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
+        <?php if ( $args['badge'] ) : ?>
+            <span class="pricing-card__badge"><?php echo esc_html( $args['badge'] ); ?></span>
+        <?php endif; ?>
+
+        <div class="pricing-card__header">
+            <h3 class="pricing-card__name"><?php echo esc_html( $args['name'] ); ?></h3>
+
+            <?php if ( $args['price'] ) : ?>
+                <div class="pricing-card__price">
+                    <span class="pricing-card__amount"><?php echo esc_html( $args['price'] ); ?></span>
+                    <?php if ( $args['period'] ) : ?>
+                        <span class="pricing-card__period"><?php echo esc_html( $args['period'] ); ?></span>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if ( $args['description'] ) : ?>
+                <p class="pricing-card__description"><?php echo esc_html( $args['description'] ); ?></p>
+            <?php endif; ?>
+        </div>
+
+        <?php if ( ! empty( $args['features'] ) ) : ?>
+            <ul class="pricing-card__features">
+                <?php foreach ( $args['features'] as $feature ) : ?>
+                    <?php if ( ! empty( $feature['text'] ) ) : ?>
+                        <li class="pricing-card__feature">
+                            <span class="pricing-card__feature-icon" aria-hidden="true">✓</span>
+                            <?php echo esc_html( $feature['text'] ); ?>
+                        </li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </ul>
+        <?php endif; ?>
+
+        <?php if ( $args['button'] && ! empty( $args['button']['url'] ) ) : ?>
+            <div class="pricing-card__footer">
+                <a
+                    href="<?php echo esc_url( $args['button']['url'] ); ?>"
+                    class="btn btn--primary btn--block"
+                    <?php echo ! empty( $args['button']['target'] ) ? 'target="_blank" rel="noopener"' : ''; ?>
+                >
+                    <?php echo esc_html( $args['button']['title'] ); ?>
+                </a>
+            </div>
+        <?php endif; ?>
+    </div>
+    <?php
+}
