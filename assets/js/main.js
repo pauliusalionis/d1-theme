@@ -171,10 +171,92 @@
     els.forEach(function (el) { observer.observe(el); });
   }
 
+  /**
+   * Stats Counter Animation
+   * Counts up numbers when they enter the viewport
+   * Requires: .js-stat with data-value attribute
+   */
+  function initStatsCounter() {
+    var stats = document.querySelectorAll('.js-stat');
+    if (!stats.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      return; // Skip animation on unsupported browsers
+    }
+
+    function animateCounter(el, target) {
+      var current = 0;
+      var increment = target / 60; // 60 frames for smooth animation
+      var duration = 2000; // 2 seconds
+      var stepTime = duration / 60;
+
+      var valueEl = el.querySelector('.stat__value');
+      if (!valueEl) return;
+
+      var timer = setInterval(function () {
+        current += increment;
+        if (current >= target) {
+          valueEl.textContent = Math.round(target);
+          clearInterval(timer);
+        } else {
+          valueEl.textContent = Math.round(current);
+        }
+      }, stepTime);
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+
+        var stat = entry.target;
+        var valueEl = stat.querySelector('.stat__number');
+        if (!valueEl) return;
+
+        var targetValue = parseFloat(valueEl.getAttribute('data-value'));
+        if (isNaN(targetValue)) return;
+
+        animateCounter(stat, targetValue);
+        observer.unobserve(stat);
+      });
+    }, { threshold: 0.5 });
+
+    stats.forEach(function (stat) { observer.observe(stat); });
+  }
+
+  /**
+   * Pricing Toggle
+   * Switches between pricing periods (monthly/yearly)
+   * Requires: [data-toggle-pricing] button
+   */
+  function initPricingToggle() {
+    var toggleBtn = document.querySelector('[data-toggle-pricing]');
+    if (!toggleBtn) return;
+
+    var labels = toggleBtn.querySelectorAll('.pricing-toggle__label');
+    var activeIndex = 0;
+
+    toggleBtn.addEventListener('click', function () {
+      // Toggle active state
+      activeIndex = activeIndex === 0 ? 1 : 0;
+
+      labels.forEach(function (label, index) {
+        label.classList.toggle('pricing-toggle__label--active', index === activeIndex);
+      });
+
+      // Dispatch custom event for potential price updates
+      var event = new CustomEvent('pricingToggle', {
+        detail: { activeIndex: activeIndex }
+      });
+      document.dispatchEvent(event);
+    });
+  }
+
   domReady(function () {
     initHeaderDrawer();
     initHeaderScrollState();
     initAccordions();
     initFadeIn();
+    initStatsCounter();
+    initPricingToggle();
   });
 })();

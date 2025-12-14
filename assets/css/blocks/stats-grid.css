@@ -1,0 +1,192 @@
+/*
+ * Block: Stats Grid
+ * Display statistics with animated count-up effect
+ */
+
+/* ============================================
+   Grid Layout
+   ============================================ */
+
+.stats-grid__grid {
+	display: grid;
+	gap: var(--space-8);
+	margin-top: var(--space-8);
+}
+
+/* 2 Column Layout */
+.stats-grid__grid--cols-2 {
+	grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+	.stats-grid__grid--cols-2 {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+/* 3 Column Layout */
+.stats-grid__grid--cols-3 {
+	grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+	.stats-grid__grid--cols-3 {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 1024px) {
+	.stats-grid__grid--cols-3 {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+/* 4 Column Layout (Default) */
+.stats-grid__grid--cols-4 {
+	grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+	.stats-grid__grid--cols-4 {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 1024px) {
+	.stats-grid__grid--cols-4 {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+/* ============================================
+   Stat Component
+   ============================================ */
+
+.stat {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	padding: var(--space-6);
+	border-radius: var(--radius-lg);
+	transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.stat:hover {
+	transform: translateY(-4px);
+	box-shadow: var(--shadow-soft);
+}
+
+.stat__number {
+	display: flex;
+	align-items: baseline;
+	gap: 0.25rem;
+	font-size: var(--fs-3xl);
+	font-weight: 700;
+	color: var(--color-primary);
+	margin-bottom: var(--space-2);
+	line-height: 1;
+}
+
+@media (min-width: 768px) {
+	.stat__number {
+		font-size: 3.5rem;
+	}
+}
+
+.stat__prefix {
+	font-size: 0.7em;
+	opacity: 0.9;
+}
+
+.stat__value {
+	/* This will be animated with JS */
+}
+
+.stat__suffix {
+	font-size: 0.7em;
+	opacity: 0.9;
+}
+
+.stat__label {
+	font-size: var(--fs-lg);
+	font-weight: 600;
+	color: var(--color-text);
+	margin-bottom: var(--space-1);
+}
+
+.stat__description {
+	font-size: var(--fs-sm);
+	color: var(--color-text-muted);
+	line-height: 1.5;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+.stats-grid__grid .stat {
+	opacity: 0;
+	animation: stat-fade-in-scale 0.6s ease-out forwards;
+}
+
+.stats-grid__grid .stat:nth-child(1) { animation-delay: 0.1s; }
+.stats-grid__grid .stat:nth-child(2) { animation-delay: 0.2s; }
+.stats-grid__grid .stat:nth-child(3) { animation-delay: 0.3s; }
+.stats-grid__grid .stat:nth-child(4) { animation-delay: 0.4s; }
+.stats-grid__grid .stat:nth-child(5) { animation-delay: 0.5s; }
+.stats-grid__grid .stat:nth-child(6) { animation-delay: 0.6s; }
+.stats-grid__grid .stat:nth-child(7) { animation-delay: 0.7s; }
+.stats-grid__grid .stat:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes stat-fade-in-scale {
+	from {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+/* Number pulse effect on hover */
+.stat:hover .stat__number {
+	animation: stat-pulse 0.6s ease-in-out;
+}
+
+@keyframes stat-pulse {
+	0%, 100% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.05);
+	}
+}
+
+/* ============================================
+   Animation State for JS
+   ============================================ */
+
+.js-stat .stat__value {
+	/* Will be counted up by JS when in viewport */
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+	.stats-grid__grid .stat {
+		animation: none !important;
+		opacity: 1;
+	}
+
+	.stat:hover {
+		transform: none;
+	}
+
+	.stat:hover .stat__number {
+		animation: none !important;
+	}
+}
