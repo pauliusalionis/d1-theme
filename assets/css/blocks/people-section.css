@@ -1,0 +1,96 @@
+/*
+ * Block: People Section
+ * Display team members
+ */
+
+/* ============================================
+   Grid Layout
+   ============================================ */
+
+.people-section__grid {
+	display: grid;
+	gap: var(--space-6);
+	margin-top: var(--space-8);
+}
+
+.people-section__grid--cols-2 {
+	grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+	.people-section__grid--cols-2 {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+.people-section__grid--cols-3 {
+	grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+	.people-section__grid--cols-3 {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 1024px) {
+	.people-section__grid--cols-3 {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.people-section__grid--cols-4 {
+	grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+	.people-section__grid--cols-4 {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 1024px) {
+	.people-section__grid--cols-4 {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+.people-section__grid .person {
+	opacity: 0;
+	animation: person-fade-in 0.6s ease-out forwards;
+}
+
+.people-section__grid .person:nth-child(1) { animation-delay: 0.1s; }
+.people-section__grid .person:nth-child(2) { animation-delay: 0.2s; }
+.people-section__grid .person:nth-child(3) { animation-delay: 0.3s; }
+.people-section__grid .person:nth-child(4) { animation-delay: 0.4s; }
+.people-section__grid .person:nth-child(5) { animation-delay: 0.5s; }
+.people-section__grid .person:nth-child(6) { animation-delay: 0.6s; }
+.people-section__grid .person:nth-child(7) { animation-delay: 0.7s; }
+.people-section__grid .person:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes person-fade-in {
+	from {
+		opacity: 0;
+		transform: scale(0.95);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+	.people-section__grid .person {
+		animation: none !important;
+		opacity: 1;
+	}
+}

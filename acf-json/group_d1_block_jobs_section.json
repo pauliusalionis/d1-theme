@@ -1,0 +1,103 @@
+{
+    "key": "group_d1_block_jobs_section",
+    "title": "Block: Jobs Section",
+    "fields": [
+        {
+            "key": "field_d1_jobs_section_tab_content",
+            "label": "Content",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_d1_jobs_section_clone_heading",
+            "label": "",
+            "name": "",
+            "type": "clone",
+            "clone": ["group_d1_heading_group"],
+            "display": "seamless",
+            "layout": "block"
+        },
+        {
+            "key": "field_d1_jobs_section_jobs",
+            "label": "Job Listings",
+            "name": "jobs",
+            "type": "repeater",
+            "instructions": "Add job openings and career opportunities.",
+            "layout": "block",
+            "button_label": "Add Job",
+            "collapsed": "field_d1_job_title",
+            "sub_fields": [
+                {
+                    "key": "field_d1_job_title",
+                    "label": "Job Title",
+                    "name": "title",
+                    "type": "text",
+                    "required": 1
+                },
+                {
+                    "key": "field_d1_job_department",
+                    "label": "Department",
+                    "name": "department",
+                    "type": "text",
+                    "wrapper": {"width": "33"}
+                },
+                {
+                    "key": "field_d1_job_location",
+                    "label": "Location",
+                    "name": "location",
+                    "type": "text",
+                    "wrapper": {"width": "33"}
+                },
+                {
+                    "key": "field_d1_job_type",
+                    "label": "Job Type",
+                    "name": "type",
+                    "type": "text",
+                    "placeholder": "Full-time, Part-time, Contract",
+                    "wrapper": {"width": "34"}
+                },
+                {
+                    "key": "field_d1_job_description",
+                    "label": "Description",
+                    "name": "description",
+                    "type": "textarea",
+                    "rows": 3
+                },
+                {
+                    "key": "field_d1_job_link",
+                    "label": "Application Link",
+                    "name": "link",
+                    "type": "link",
+                    "return_format": "array"
+                }
+            ]
+        },
+        {
+            "key": "field_d1_jobs_section_tab_settings",
+            "label": "Settings",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_d1_jobs_section_clone_section",
+            "label": "",
+            "name": "",
+            "type": "clone",
+            "clone": ["group_d1_section_settings"],
+            "display": "seamless",
+            "layout": "block"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/jobs-section"
+            }
+        ]
+    ],
+    "active": true
+}

@@ -664,3 +664,249 @@ function d1_pricing_card( $args = array() ) {
     </div>
     <?php
 }
+
+/**
+ * Review/Testimonial component
+ *
+ * @param array $args Review settings
+ * @return void
+ */
+function d1_review( $args = array() ) {
+    $defaults = array(
+        'quote'       => '',
+        'author'      => '',
+        'position'    => '',
+        'company'     => '',
+        'image'       => null,
+        'rating'      => 0,
+        'show_rating' => true,
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+    if ( ! $args['quote'] ) {
+        return;
+    }
+    ?>
+    <div class="review">
+        <?php if ( $args['show_rating'] && $args['rating'] > 0 ) : ?>
+            <div class="review__rating" aria-label="Rating: <?php echo esc_attr( $args['rating'] ); ?> out of 5">
+                <?php for ( $i = 1; $i <= 5; $i++ ) : ?>
+                    <span class="review__star <?php echo $i <= $args['rating'] ? 'review__star--filled' : ''; ?>" aria-hidden="true">★</span>
+                <?php endfor; ?>
+            </div>
+        <?php endif; ?>
+
+        <blockquote class="review__quote">
+            <?php echo wp_kses_post( $args['quote'] ); ?>
+        </blockquote>
+
+        <?php if ( $args['author'] || $args['image'] ) : ?>
+            <div class="review__author">
+                <?php if ( $args['image'] ) : ?>
+                    <figure class="review__avatar">
+                        <?php echo wp_get_attachment_image( $args['image']['ID'], 'thumbnail', false, array(
+                            'class'   => 'review__avatar-img',
+                            'loading' => 'lazy',
+                        ) ); ?>
+                    </figure>
+                <?php endif; ?>
+
+                <div class="review__author-info">
+                    <?php if ( $args['author'] ) : ?>
+                        <cite class="review__author-name"><?php echo esc_html( $args['author'] ); ?></cite>
+                    <?php endif; ?>
+                    <?php if ( $args['position'] || $args['company'] ) : ?>
+                        <p class="review__author-meta">
+                            <?php
+                            $meta = array();
+                            if ( $args['position'] ) {
+                                $meta[] = $args['position'];
+                            }
+                            if ( $args['company'] ) {
+                                $meta[] = $args['company'];
+                            }
+                            echo esc_html( implode( ', ', $meta ) );
+                            ?>
+                        </p>
+                    <?php endif; ?>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+    <?php
+}
+
+/**
+ * Job listing component
+ *
+ * @param array $args Job settings
+ * @return void
+ */
+function d1_job( $args = array() ) {
+    $defaults = array(
+        'title'       => '',
+        'department'  => '',
+        'location'    => '',
+        'type'        => '',
+        'description' => '',
+        'link'        => null,
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+    if ( ! $args['title'] ) {
+        return;
+    }
+
+    $tag = $args['link'] ? 'a' : 'div';
+    $href = $args['link'] ? ' href="' . esc_url( $args['link']['url'] ) . '"' : '';
+    $target = ( $args['link'] && ! empty( $args['link']['target'] ) ) ? ' target="_blank" rel="noopener"' : '';
+    ?>
+    <<?php echo $tag . $href . $target; ?> class="job">
+        <div class="job__header">
+            <h3 class="job__title"><?php echo esc_html( $args['title'] ); ?></h3>
+            <div class="job__meta">
+                <?php if ( $args['department'] ) : ?>
+                    <span class="job__department"><?php echo esc_html( $args['department'] ); ?></span>
+                <?php endif; ?>
+                <?php if ( $args['location'] ) : ?>
+                    <span class="job__location"><?php echo esc_html( $args['location'] ); ?></span>
+                <?php endif; ?>
+                <?php if ( $args['type'] ) : ?>
+                    <span class="job__type"><?php echo esc_html( $args['type'] ); ?></span>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <?php if ( $args['description'] ) : ?>
+            <div class="job__description"><?php echo wp_kses_post( $args['description'] ); ?></div>
+        <?php endif; ?>
+
+        <?php if ( $args['link'] ) : ?>
+            <span class="job__arrow" aria-hidden="true">→</span>
+        <?php endif; ?>
+    </<?php echo $tag; ?>>
+    <?php
+}
+
+/**
+ * Team member component
+ *
+ * @param array $args Team member settings
+ * @return void
+ */
+function d1_person( $args = array() ) {
+    $defaults = array(
+        'image'       => null,
+        'name'        => '',
+        'position'    => '',
+        'description' => '',
+        'email'       => '',
+        'phone'       => '',
+        'social'      => array(),
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+    if ( ! $args['name'] ) {
+        return;
+    }
+    ?>
+    <div class="person">
+        <?php if ( $args['image'] ) : ?>
+            <figure class="person__image">
+                <?php echo wp_get_attachment_image( $args['image']['ID'], 'medium', false, array(
+                    'class'   => 'person__photo',
+                    'loading' => 'lazy',
+                ) ); ?>
+            </figure>
+        <?php endif; ?>
+
+        <div class="person__content">
+            <h3 class="person__name"><?php echo esc_html( $args['name'] ); ?></h3>
+
+            <?php if ( $args['position'] ) : ?>
+                <p class="person__position"><?php echo esc_html( $args['position'] ); ?></p>
+            <?php endif; ?>
+
+            <?php if ( $args['description'] ) : ?>
+                <div class="person__description"><?php echo wp_kses_post( $args['description'] ); ?></div>
+            <?php endif; ?>
+
+            <?php if ( $args['email'] || $args['phone'] || ! empty( $args['social'] ) ) : ?>
+                <div class="person__contact">
+                    <?php if ( $args['email'] ) : ?>
+                        <a href="mailto:<?php echo esc_attr( $args['email'] ); ?>" class="person__contact-item">
+                            <?php echo esc_html( $args['email'] ); ?>
+                        </a>
+                    <?php endif; ?>
+                    <?php if ( $args['phone'] ) : ?>
+                        <a href="tel:<?php echo esc_attr( $args['phone'] ); ?>" class="person__contact-item">
+                            <?php echo esc_html( $args['phone'] ); ?>
+                        </a>
+                    <?php endif; ?>
+                    <?php if ( ! empty( $args['social'] ) ) : ?>
+                        <div class="person__social">
+                            <?php foreach ( $args['social'] as $social ) : ?>
+                                <?php if ( ! empty( $social['link'] ) ) : ?>
+                                    <a
+                                        href="<?php echo esc_url( $social['link']['url'] ); ?>"
+                                        class="person__social-link"
+                                        <?php echo ! empty( $social['link']['target'] ) ? 'target="_blank" rel="noopener"' : ''; ?>
+                                        aria-label="<?php echo esc_attr( $social['platform'] ?? 'Social link' ); ?>"
+                                    >
+                                        <?php echo esc_html( $social['platform'] ?? '→' ); ?>
+                                    </a>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+    <?php
+}
+
+/**
+ * Company detail item component
+ *
+ * @param array $args Detail settings
+ * @return void
+ */
+function d1_company_detail( $args = array() ) {
+    $defaults = array(
+        'icon'  => '',
+        'label' => '',
+        'value' => '',
+        'link'  => null,
+    );
+    $args = wp_parse_args( $args, $defaults );
+
+    if ( ! $args['value'] ) {
+        return;
+    }
+    ?>
+    <div class="company-detail">
+        <?php if ( $args['icon'] ) : ?>
+            <span class="company-detail__icon" aria-hidden="true"><?php echo esc_html( $args['icon'] ); ?></span>
+        <?php endif; ?>
+
+        <div class="company-detail__content">
+            <?php if ( $args['label'] ) : ?>
+                <span class="company-detail__label"><?php echo esc_html( $args['label'] ); ?></span>
+            <?php endif; ?>
+
+            <?php if ( $args['link'] ) : ?>
+                <a
+                    href="<?php echo esc_url( $args['link']['url'] ); ?>"
+                    class="company-detail__value company-detail__value--link"
+                    <?php echo ! empty( $args['link']['target'] ) ? 'target="_blank" rel="noopener"' : ''; ?>
+                >
+                    <?php echo esc_html( $args['value'] ); ?>
+                </a>
+            <?php else : ?>
+                <span class="company-detail__value"><?php echo wp_kses_post( $args['value'] ); ?></span>
+            <?php endif; ?>
+        </div>
+    </div>
+    <?php
+}

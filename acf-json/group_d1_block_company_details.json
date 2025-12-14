@@ -1,0 +1,99 @@
+{
+    "key": "group_d1_block_company_details",
+    "title": "Block: Company Details",
+    "fields": [
+        {
+            "key": "field_d1_company_details_tab_content",
+            "label": "Content",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_d1_company_details_clone_heading",
+            "label": "",
+            "name": "",
+            "type": "clone",
+            "clone": ["group_d1_heading_group"],
+            "display": "seamless",
+            "layout": "block"
+        },
+        {
+            "key": "field_d1_company_details_details",
+            "label": "Company Details",
+            "name": "details",
+            "type": "repeater",
+            "instructions": "Add company information (address, phone, email, etc.)",
+            "layout": "table",
+            "button_label": "Add Detail",
+            "sub_fields": [
+                {
+                    "key": "field_d1_company_detail_icon",
+                    "label": "Icon",
+                    "name": "icon",
+                    "type": "text",
+                    "placeholder": "📍"
+                },
+                {
+                    "key": "field_d1_company_detail_label",
+                    "label": "Label",
+                    "name": "label",
+                    "type": "text",
+                    "placeholder": "Address"
+                },
+                {
+                    "key": "field_d1_company_detail_value",
+                    "label": "Value",
+                    "name": "value",
+                    "type": "text",
+                    "required": 1
+                },
+                {
+                    "key": "field_d1_company_detail_link",
+                    "label": "Link",
+                    "name": "link",
+                    "type": "link",
+                    "instructions": "Optional clickable link",
+                    "return_format": "array"
+                }
+            ]
+        },
+        {
+            "key": "field_d1_company_details_layout",
+            "label": "Layout",
+            "name": "layout",
+            "type": "select",
+            "choices": {
+                "grid": "Grid",
+                "list": "List"
+            },
+            "default_value": "grid"
+        },
+        {
+            "key": "field_d1_company_details_tab_settings",
+            "label": "Settings",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_d1_company_details_clone_section",
+            "label": "",
+            "name": "",
+            "type": "clone",
+            "clone": ["group_d1_section_settings"],
+            "display": "seamless",
+            "layout": "block"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/company-details"
+            }
+        ]
+    ],
+    "active": true
+}

@@ -1,0 +1,145 @@
+{
+    "key": "group_d1_block_text_image_reviews",
+    "title": "Block: Text Image Reviews",
+    "fields": [
+        {
+            "key": "field_d1_text_image_reviews_tab_content",
+            "label": "Content",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_d1_text_image_reviews_clone_heading",
+            "label": "",
+            "name": "",
+            "type": "clone",
+            "clone": ["group_d1_heading_group"],
+            "display": "seamless",
+            "layout": "block"
+        },
+        {
+            "key": "field_d1_text_image_reviews_text_content",
+            "label": "Text Content",
+            "name": "text_content",
+            "type": "wysiwyg",
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0
+        },
+        {
+            "key": "field_d1_text_image_reviews_image",
+            "label": "Image",
+            "name": "image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_d1_text_image_reviews_image_position",
+            "label": "Image Position",
+            "name": "image_position",
+            "type": "select",
+            "choices": {
+                "left": "Left",
+                "right": "Right"
+            },
+            "default_value": "left"
+        },
+        {
+            "key": "field_d1_text_image_reviews_reviews",
+            "label": "Reviews",
+            "name": "reviews",
+            "type": "repeater",
+            "instructions": "Add customer testimonials.",
+            "layout": "block",
+            "button_label": "Add Review",
+            "collapsed": "field_d1_text_image_review_author",
+            "max": 3,
+            "sub_fields": [
+                {
+                    "key": "field_d1_text_image_review_quote",
+                    "label": "Quote",
+                    "name": "quote",
+                    "type": "textarea",
+                    "required": 1,
+                    "rows": 3
+                },
+                {
+                    "key": "field_d1_text_image_review_rating",
+                    "label": "Rating",
+                    "name": "rating",
+                    "type": "number",
+                    "min": 0,
+                    "max": 5,
+                    "step": 1,
+                    "wrapper": {"width": "33"}
+                },
+                {
+                    "key": "field_d1_text_image_review_author",
+                    "label": "Author",
+                    "name": "author",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": {"width": "67"}
+                },
+                {
+                    "key": "field_d1_text_image_review_position",
+                    "label": "Position",
+                    "name": "position",
+                    "type": "text",
+                    "wrapper": {"width": "50"}
+                },
+                {
+                    "key": "field_d1_text_image_review_company",
+                    "label": "Company",
+                    "name": "company",
+                    "type": "text",
+                    "wrapper": {"width": "50"}
+                },
+                {
+                    "key": "field_d1_text_image_review_image",
+                    "label": "Photo",
+                    "name": "image",
+                    "type": "image",
+                    "return_format": "array",
+                    "preview_size": "thumbnail"
+                }
+            ]
+        },
+        {
+            "key": "field_d1_text_image_reviews_show_ratings",
+            "label": "Show Ratings",
+            "name": "show_ratings",
+            "type": "true_false",
+            "default_value": 1,
+            "ui": 1
+        },
+        {
+            "key": "field_d1_text_image_reviews_tab_settings",
+            "label": "Settings",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_d1_text_image_reviews_clone_section",
+            "label": "",
+            "name": "",
+            "type": "clone",
+            "clone": ["group_d1_section_settings"],
+            "display": "seamless",
+            "layout": "block"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/text-image-reviews"
+            }
+        ]
+    ],
+    "active": true
+}
