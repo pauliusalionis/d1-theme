@@ -131,6 +131,26 @@ function d1_register_acf_blocks() {
         ),
     ) );
 
+    // Services List (conditional - only if Services CPT is enabled)
+    $enabled_cpts = d1_get_enabled_cpts();
+    if ( in_array( 'services', $enabled_cpts, true ) ) {
+        acf_register_block_type( array(
+            'name'            => 'services-list',
+            'title'           => __( 'Services List', 'd1' ),
+            'description'     => __( 'Display services from the Services post type in a grid layout.', 'd1' ),
+            'category'        => 'd1-blocks',
+            'icon'            => 'clipboard',
+            'keywords'        => array( 'services', 'list', 'grid', 'cpt' ),
+            'render_template' => D1_DIR . '/template-parts/blocks/services-list.php',
+            'enqueue_style'   => D1_URI . '/assets/css/blocks/services-list.css',
+            'supports'        => array(
+                'align'  => array( 'full', 'wide' ),
+                'anchor' => true,
+                'mode'   => true,
+            ),
+        ) );
+    }
+
     // Shortcode Block
     acf_register_block_type( array(
         'name'            => 'shortcode',
