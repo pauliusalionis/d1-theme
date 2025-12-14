@@ -17,3 +17,4 @@ require_once D1_DIR . '/inc/options.php';
 require_once D1_DIR . '/inc/acf-blocks.php';
 require_once D1_DIR . '/inc/cpt.php';
 require_once D1_DIR . '/inc/template-cpt.php';
+require_once D1_DIR . '/inc/components.php';

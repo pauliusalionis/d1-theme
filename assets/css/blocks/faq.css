@@ -1,0 +1,11 @@
+/*
+ * Block: FAQ Section
+ */
+
+.faq-section .faq-list {
+    max-width: 50rem;
+}
+
+.faq-section.stack--center .faq-list {
+    margin-inline: auto;
+}

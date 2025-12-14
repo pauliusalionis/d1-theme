@@ -1,0 +1,23 @@
+/*
+ * Block: Text + Image
+ */
+
+.text-image__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.text-image__media {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .text-image--media-large .split {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    }
+
+    .text-image--media-large.text-image--reverse .split {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    }
+}

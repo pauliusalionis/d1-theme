@@ -1,0 +1,15 @@
+/*
+ * Block: CTA Section
+ */
+
+.cta-section .heading-group__title {
+    font-size: var(--fs-3xl);
+}
+
+.cta-section .rich-text {
+    max-width: 36rem;
+}
+
+.cta-section.stack--center .rich-text {
+    margin-inline: auto;
+}

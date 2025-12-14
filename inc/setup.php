@@ -32,3 +32,46 @@ function d1_setup() {
     // Load text domain
     load_theme_textdomain( 'd1', D1_DIR . '/languages' );
 }
+
+/**
+ * Allow only D1 ACF blocks in the editor
+ */
+add_filter( 'allowed_block_types_all', 'd1_allowed_block_types', 10, 2 );
+
+function d1_allowed_block_types( $allowed_blocks, $editor_context ) {
+    // Get all registered blocks
+    $registered_blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
+    
+    // Filter to only ACF blocks (they start with 'acf/')
+    $acf_blocks = array();
+    foreach ( $registered_blocks as $block_name => $block ) {
+        if ( strpos( $block_name, 'acf/' ) === 0 ) {
+            $acf_blocks[] = $block_name;
+        }
+    }
+    
+    // Also allow some essential core blocks
+    $allowed_core = array(
+        'core/paragraph',
+        'core/heading',
+        'core/list',
+        'core/list-item',
+        'core/image',
+    );
+    
+    return array_merge( $acf_blocks, $allowed_core );
+}
+
+/**
+ * Add D1 block category
+ */
+add_filter( 'block_categories_all', 'd1_block_category', 10, 2 );
+
+function d1_block_category( $categories, $editor_context ) {
+    array_unshift( $categories, array(
+        'slug'  => 'd1-blocks',
+        'title' => __( 'D1 Blocks', 'd1' ),
+        'icon'  => 'layout',
+    ) );
+    return $categories;
+}

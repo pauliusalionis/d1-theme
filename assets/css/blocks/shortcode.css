@@ -1,0 +1,12 @@
+/*
+ * Block: Shortcode
+ */
+
+.shortcode-block .shortcode-content {
+    width: 100%;
+}
+
+.shortcode-block--narrow .shortcode-content {
+    max-width: 40rem;
+    margin-inline: auto;
+}

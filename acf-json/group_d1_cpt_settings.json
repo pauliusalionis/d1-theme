@@ -1,0 +1,56 @@
+{
+    "key": "group_d1_cpt_settings",
+    "title": "CPT Settings",
+    "fields": [
+        {
+            "key": "field_d1_enabled_cpts",
+            "label": "Enabled Post Types",
+            "name": "d1_enabled_cpts",
+            "aria-label": "",
+            "type": "checkbox",
+            "instructions": "Select which custom post types to enable. Disabling a CPT hides it from the admin menu but preserves existing content.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "services": "Services",
+                "locations": "Locations",
+                "reviews": "Reviews",
+                "projects": "Projects",
+                "jobs": "Jobs",
+                "people": "People"
+            },
+            "layout": "vertical",
+            "return_format": "value",
+            "default_value": [],
+            "allow_custom": 0,
+            "save_custom": 0,
+            "toggle": 0,
+            "custom_choice_button_text": "Add new choice"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "d1-cpt-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1765654905
+}

@@ -12,6 +12,7 @@ function d1_register_options_pages() {
         return;
     }
 
+    // Parent page (redirects to first child)
     acf_add_options_page( array(
         'page_title' => __( 'Theme Settings', 'd1' ),
         'menu_title' => __( 'Theme Settings', 'd1' ),
@@ -19,8 +20,18 @@ function d1_register_options_pages() {
         'capability' => 'manage_options',
         'icon_url'   => 'dashicons-admin-customizer',
         'position'   => 59,
+        'redirect'   => true,
     ) );
 
+    // General Settings subpage
+    acf_add_options_sub_page( array(
+        'page_title'  => __( 'General Settings', 'd1' ),
+        'menu_title'  => __( 'General Settings', 'd1' ),
+        'menu_slug'   => 'd1-general-settings',
+        'parent_slug' => 'd1-theme-settings',
+    ) );
+
+    // CPT Settings subpage
     acf_add_options_sub_page( array(
         'page_title'  => __( 'CPT Settings', 'd1' ),
         'menu_title'  => __( 'CPT Settings', 'd1' ),

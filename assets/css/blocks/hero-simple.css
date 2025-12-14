@@ -1,0 +1,127 @@
+/*
+ * Block: Hero - Simple (default)
+ */
+.hero-simple .heading-group__title {
+  font-size: var(--fs-4xl);
+}
+
+.hero-simple .heading-group {
+  margin-bottom: var(--space-4);
+}
+
+.hero-simple .rich-text {
+  font-size: var(--fs-lg);
+  max-width: 38rem;
+}
+
+.hero-simple .stack--center .rich-text {
+  margin-inline: auto;
+}
+
+/* ------------------------------------------------
+   Hero - Simple (alternative layout)
+   Webflow-like: big headline left, small text right
+   ------------------------------------------------ */
+
+.hero-simple--alternative {
+  /* more “full screenish” */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.hero-simple--alternative .container.section__inner,
+.hero-simple--alternative .container {
+  width: 100%;
+}
+
+/* Make background overlay slightly stronger for readability */
+.hero-simple--alternative.section--has-bg::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.40),
+    rgba(0,0,0,0.22)
+  );
+}
+
+/* If you want it brand-tinted instead of black, use color-mix() */
+.hero-simple--alternative.section--has-bg.section--brand::before {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-primary) 55%, transparent),
+    color-mix(in srgb, #000 25%, transparent)
+  );
+}
+
+.hero-simple__alt {
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-end;
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+}
+
+/* Left column: huge headline */
+.hero-simple--alternative .heading-group {
+  margin-bottom: 0;
+}
+
+.hero-simple--alternative .heading-group__title {
+  font-size: clamp(2.6rem, 5.4vw, 5.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  max-width: 18ch;
+}
+
+/* Eyebrow as a subtle pill (optional Webflow vibe) */
+.hero-simple--alternative .heading-group__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.35rem 0.7rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  margin-bottom: var(--space-4);
+}
+
+.hero-simple__alt-left {
+    width: 100%;
+    max-width: 695px;
+}
+
+/* Right column: small “meta” text block */
+.hero-simple__alt-right {
+  max-width: 308px;
+  width: 100%;
+}
+
+.hero-simple__alt-subheading {
+  margin: 0 0 var(--space-3);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.90);
+  letter-spacing: -0.01em;
+}
+
+.hero-simple--alternative .rich-text {
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.86);
+  max-width: none;
+}
+
+.hero-simple--alternative .btn {
+  margin-top: var(--space-4);
+}
+
+/* Ensure text is white on image */
+.hero-simple--alternative,
+.hero-simple--alternative .heading-group__title {
+  color: #fff;
+}

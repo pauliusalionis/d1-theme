@@ -1,0 +1,705 @@
+[
+  {
+    "key": "group_d1_section_settings",
+    "title": "D1: Section Settings",
+    "fields": [
+      {
+        "key": "field_d1_section_hidden",
+        "label": "Hide Section",
+        "name": "section_hidden",
+        "type": "true_false",
+        "instructions": "Temporarily hide this section on the frontend.",
+        "ui": 1,
+        "default_value": 0
+      },
+      {
+        "key": "field_d1_section_background",
+        "label": "Background",
+        "name": "section_background",
+        "type": "select",
+        "instructions": "",
+        "choices": {
+          "default": "Default (White)",
+          "alt": "Soft (Light Gray)",
+          "dark": "Dark",
+          "brand": "Brand Color"
+        },
+        "default_value": "default",
+        "return_format": "value"
+      },
+      {
+        "key": "field_d1_section_spacing",
+        "label": "Vertical Spacing",
+        "name": "section_spacing",
+        "type": "select",
+        "instructions": "",
+        "choices": {
+          "narrow": "Compact",
+          "default": "Normal",
+          "spacious": "Spacious"
+        },
+        "default_value": "default",
+        "return_format": "value"
+      }
+    ],
+    "location": [],
+    "active": true,
+    "show_in_rest": 0
+  },
+  {
+    "key": "group_d1_heading_group",
+    "title": "D1: Heading Group",
+    "fields": [
+      {
+        "key": "field_d1_heading_eyebrow",
+        "label": "Eyebrow",
+        "name": "heading_eyebrow",
+        "type": "text",
+        "instructions": "Small label above the heading (e.g., \"Our Services\").",
+        "placeholder": ""
+      },
+      {
+        "key": "field_d1_heading_text",
+        "label": "Heading",
+        "name": "heading_text",
+        "type": "text",
+        "instructions": "",
+        "placeholder": ""
+      },
+      {
+        "key": "field_d1_heading_tag",
+        "label": "Heading Tag",
+        "name": "heading_tag",
+        "type": "select",
+        "instructions": "Choose appropriate heading level for SEO.",
+        "choices": {
+          "h1": "H1",
+          "h2": "H2",
+          "h3": "H3"
+        },
+        "default_value": "h2",
+        "return_format": "value"
+      },
+      {
+        "key": "field_d1_heading_subtext",
+        "label": "Subheading",
+        "name": "heading_subtext",
+        "type": "textarea",
+        "instructions": "Brief supporting text below the heading.",
+        "rows": 2,
+        "new_lines": "br"
+      }
+    ],
+    "location": [],
+    "active": true,
+    "show_in_rest": 0
+  },
+  {
+    "key": "group_d1_button_group",
+    "title": "D1: Button Group",
+    "fields": [
+      {
+        "key": "field_d1_buttons",
+        "label": "Buttons",
+        "name": "buttons",
+        "type": "repeater",
+        "instructions": "",
+        "min": 0,
+        "max": 3,
+        "layout": "block",
+        "button_label": "Add Button",
+        "sub_fields": [
+          {
+            "key": "field_d1_button_link",
+            "label": "Link",
+            "name": "link",
+            "type": "link",
+            "return_format": "array"
+          },
+          {
+            "key": "field_d1_button_style",
+            "label": "Style",
+            "name": "style",
+            "type": "select",
+            "choices": {
+              "primary": "Primary",
+              "ghost": "Ghost (Outline)",
+              "text": "Text Link"
+            },
+            "default_value": "primary",
+            "return_format": "value"
+          }
+        ]
+      }
+    ],
+    "location": [],
+    "active": true,
+    "show_in_rest": 0
+  },
+  {
+    "key": "group_d1_block_hero_simple",
+    "title": "Block: Hero - Simple",
+    "fields": [
+      {
+        "key": "field_d1_hero_tab_content",
+        "label": "Content",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_d1_hero_clone_heading",
+        "label": "",
+        "name": "",
+        "type": "clone",
+        "clone": ["group_d1_heading_group"],
+        "display": "seamless",
+        "layout": "block"
+      },
+      {
+        "key": "field_d1_hero_content",
+        "label": "Content",
+        "name": "content",
+        "type": "wysiwyg",
+        "instructions": "Optional intro text below the heading.",
+        "tabs": "all",
+        "toolbar": "basic",
+        "media_upload": 0,
+        "delay": 1
+      },
+      {
+        "key": "field_d1_hero_clone_buttons",
+        "label": "",
+        "name": "",
+        "type": "clone",
+        "clone": ["group_d1_button_group"],
+        "display": "seamless",
+        "layout": "block"
+      },
+      {
+        "key": "field_d1_hero_text_alignment",
+        "label": "Text Alignment",
+        "name": "text_alignment",
+        "type": "select",
+        "choices": {
+          "left": "Left",
+          "center": "Center"
+        },
+        "default_value": "center",
+        "return_format": "value"
+      },
+      {
+        "key": "field_d1_hero_tab_settings",
+        "label": "Settings",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_d1_hero_clone_section",
+        "label": "",
+        "name": "",
+        "type": "clone",
+        "clone": ["group_d1_section_settings"],
+        "display": "seamless",
+        "layout": "block"
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "block",
+          "operator": "==",
+          "value": "acf/hero-simple"
+        }
+      ]
+    ],
+    "active": true,
+    "show_in_rest": 0
+  },
+  {
+    "key": "group_d1_block_simple_section",
+    "title": "Block: Simple Section",
+    "fields": [
+      {
+        "key": "field_d1_simple_tab_content",
+        "label": "Content",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_d1_simple_clone_heading",
+        "label": "",
+        "name": "",
+        "type": "clone",
+        "clone": ["group_d1_heading_group"],
+        "display": "seamless",
+        "layout": "block"
+      },
+      {
+        "key": "field_d1_simple_content",
+        "label": "Content",
+        "name": "content",
+        "type": "wysiwyg",
+        "instructions": "",
+        "tabs": "all",
+        "toolbar": "full",
+        "media_upload": 0,
+        "delay": 1
+      },
+      {
+        "key": "field_d1_simple_clone_buttons",
+        "label": "",
+        "name": "",
+        "type": "clone",
+        "clone": ["group_d1_button_group"],
+        "display": "seamless",
+        "layout": "block"
+      },
+      {
+        "key": "field_d1_simple_text_alignment",
+        "label": "Text Alignment",
+        "name": "text_alignment",
+        "type": "select",
+        "choices": {
+          "left": "Left",
+          "center": "Center"
+        },
+        "default_value": "left",
+        "return_format": "value"
+      },
+      {
+        "key": "field_d1_simple_tab_settings",
+        "label": "Settings",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_d1_simple_clone_section",
+        "label": "",
+        "name": "",
+        "type": "clone",
+        "clone": ["group_d1_section_settings"],
+        "display": "seamless",
+        "layout": "block"
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "block",
+          "operator": "==",
+          "value": "acf/simple-section"
+        }
+      ]
+    ],
+    "active": true,
+    "show_in_rest": 0
+  },
+  {
+    "key": "group_d1_block_text_image",
+    "title": "Block: Text + Image",
+    "fields": [
+      {
+        "key": "field_d1_ti_tab_content",
+        "label": "Content",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_d1_ti_clone_heading",
+        "label": "",
+        "name": "",
+        "type": "clone",
+        "clone": ["group_d1_heading_group"],
+        "display": "seamless",
+        "layout": "block"
+      },
+      {
+        "key": "field_d1_ti_content",
+        "label": "Content",
+        "name": "content",
+        "type": "wysiwyg",
+        "instructions": "",
+        "tabs": "all",
+        "toolbar": "full",
+        "media_upload": 0,
+        "delay": 1
+      },
+      {
+        "key": "field_d1_ti_clone_buttons",
+        "label": "",
+        "name": "",
+        "type": "clone",
+        "clone": ["group_d1_button_group"],
+        "display": "seamless",
+        "layout": "block"
+      },
+      {
+        "key": "field_d1_ti_tab_media",
+        "label": "Media",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_d1_ti_media_image",
+        "label": "Image",
+        "name": "media_image",
+        "type": "image",
+        "return_format": "array",
+        "preview_size": "medium",
+        "library": "all"
+      },
+      {
+        "key": "field_d1_ti_media_style",
+        "label": "Image Style",
+        "name": "media_style",
+        "type": "select",
+        "choices": {
+          "default": "Default",
+          "rounded": "Rounded Corners",
+          "shadow": "Shadow"
+        },
+        "default_value": "default",
+        "return_format": "value"
+      },
+      {
+        "key": "field_d1_ti_tab_layout",
+        "label": "Layout",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_d1_ti_layout_position",
+        "label": "Image Position",
+        "name": "layout_position",
+        "type": "select",
+        "choices": {
+          "image-right": "Image Right",
+          "image-left": "Image Left"
+        },
+        "default_value": "image-right",
+        "return_format": "value"
+      },
+      {
+        "key": "field_d1_ti_layout_media_size",
+        "label": "Image Size",
+        "name": "layout_media_size",
+        "type": "select",
+        "choices": {
+          "default": "Equal (50/50)",
+          "large": "Large Image (55/45)"
+        },
+        "default_value": "default",
+        "return_format": "value"
+      },
+      {
+        "key": "field_d1_ti_tab_settings",
+        "label": "Settings",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_d1_ti_clone_section",
+        "label": "",
+        "name": "",
+        "type": "clone",
+        "clone": ["group_d1_section_settings"],
+        "display": "seamless",
+        "layout": "block"
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "block",
+          "operator": "==",
+          "value": "acf/text-image"
+        }
+      ]
+    ],
+    "active": true,
+    "show_in_rest": 0
+  },
+  {
+    "key": "group_d1_block_faq",
+    "title": "Block: FAQ Section",
+    "fields": [
+      {
+        "key": "field_d1_faq_tab_content",
+        "label": "Content",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_d1_faq_clone_heading",
+        "label": "",
+        "name": "",
+        "type": "clone",
+        "clone": ["group_d1_heading_group"],
+        "display": "seamless",
+        "layout": "block"
+      },
+      {
+        "key": "field_d1_faq_text_alignment",
+        "label": "Text Alignment",
+        "name": "text_alignment",
+        "type": "select",
+        "choices": {
+          "left": "Left",
+          "center": "Center"
+        },
+        "default_value": "left",
+        "return_format": "value"
+      },
+      {
+        "key": "field_d1_faq_tab_items",
+        "label": "FAQ Items",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_d1_faq_items",
+        "label": "FAQ Items",
+        "name": "faq_items",
+        "type": "repeater",
+        "instructions": "",
+        "min": 1,
+        "max": 20,
+        "layout": "block",
+        "button_label": "Add FAQ Item",
+        "sub_fields": [
+          {
+            "key": "field_d1_faq_item_question",
+            "label": "Question",
+            "name": "question",
+            "type": "text"
+          },
+          {
+            "key": "field_d1_faq_item_answer",
+            "label": "Answer",
+            "name": "answer",
+            "type": "wysiwyg",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 1
+          }
+        ]
+      },
+      {
+        "key": "field_d1_faq_first_open",
+        "label": "First Item Open",
+        "name": "faq_first_open",
+        "type": "true_false",
+        "instructions": "Open the first FAQ item by default.",
+        "ui": 1,
+        "default_value": 0
+      },
+      {
+        "key": "field_d1_faq_tab_settings",
+        "label": "Settings",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_d1_faq_clone_section",
+        "label": "",
+        "name": "",
+        "type": "clone",
+        "clone": ["group_d1_section_settings"],
+        "display": "seamless",
+        "layout": "block"
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "block",
+          "operator": "==",
+          "value": "acf/faq"
+        }
+      ]
+    ],
+    "active": true,
+    "show_in_rest": 0
+  },
+  {
+    "key": "group_d1_block_cta",
+    "title": "Block: CTA Section",
+    "fields": [
+      {
+        "key": "field_d1_cta_tab_content",
+        "label": "Content",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_d1_cta_clone_heading",
+        "label": "",
+        "name": "",
+        "type": "clone",
+        "clone": ["group_d1_heading_group"],
+        "display": "seamless",
+        "layout": "block"
+      },
+      {
+        "key": "field_d1_cta_content",
+        "label": "Content",
+        "name": "content",
+        "type": "wysiwyg",
+        "instructions": "Optional text below the heading.",
+        "tabs": "all",
+        "toolbar": "basic",
+        "media_upload": 0,
+        "delay": 1
+      },
+      {
+        "key": "field_d1_cta_clone_buttons",
+        "label": "",
+        "name": "",
+        "type": "clone",
+        "clone": ["group_d1_button_group"],
+        "display": "seamless",
+        "layout": "block"
+      },
+      {
+        "key": "field_d1_cta_text_alignment",
+        "label": "Text Alignment",
+        "name": "text_alignment",
+        "type": "select",
+        "choices": {
+          "left": "Left",
+          "center": "Center"
+        },
+        "default_value": "center",
+        "return_format": "value"
+      },
+      {
+        "key": "field_d1_cta_tab_settings",
+        "label": "Settings",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_d1_cta_clone_section",
+        "label": "",
+        "name": "",
+        "type": "clone",
+        "clone": ["group_d1_section_settings"],
+        "display": "seamless",
+        "layout": "block"
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "block",
+          "operator": "==",
+          "value": "acf/cta"
+        }
+      ]
+    ],
+    "active": true,
+    "show_in_rest": 0
+  },
+  {
+    "key": "group_d1_block_shortcode",
+    "title": "Block: Shortcode",
+    "fields": [
+      {
+        "key": "field_d1_sc_tab_content",
+        "label": "Content",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_d1_sc_clone_heading",
+        "label": "",
+        "name": "",
+        "type": "clone",
+        "clone": ["group_d1_heading_group"],
+        "display": "seamless",
+        "layout": "block"
+      },
+      {
+        "key": "field_d1_sc_text_alignment",
+        "label": "Text Alignment",
+        "name": "text_alignment",
+        "type": "select",
+        "choices": {
+          "left": "Left",
+          "center": "Center"
+        },
+        "default_value": "center",
+        "return_format": "value"
+      },
+      {
+        "key": "field_d1_sc_tab_shortcode",
+        "label": "Shortcode",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_d1_sc_shortcode",
+        "label": "Shortcode",
+        "name": "shortcode",
+        "type": "text",
+        "instructions": "Enter a shortcode, e.g., [wpforms id=\"123\"]",
+        "placeholder": "[wpforms id=\"123\"]"
+      },
+      {
+        "key": "field_d1_sc_shortcode_width",
+        "label": "Content Width",
+        "name": "shortcode_width",
+        "type": "select",
+        "choices": {
+          "default": "Full Width",
+          "narrow": "Narrow (Centered)"
+        },
+        "default_value": "default",
+        "return_format": "value"
+      },
+      {
+        "key": "field_d1_sc_tab_settings",
+        "label": "Settings",
+        "name": "",
+        "type": "tab",
+        "placement": "top"
+      },
+      {
+        "key": "field_d1_sc_clone_section",
+        "label": "",
+        "name": "",
+        "type": "clone",
+        "clone": ["group_d1_section_settings"],
+        "display": "seamless",
+        "layout": "block"
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "block",
+          "operator": "==",
+          "value": "acf/shortcode"
+        }
+      ]
+    ],
+    "active": true,
+    "show_in_rest": 0
+  }
+]

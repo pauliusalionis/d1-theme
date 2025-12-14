@@ -1,0 +1,11 @@
+/*
+ * Block: Simple Section
+ */
+
+.simple-section .rich-text {
+    max-width: 50rem;
+}
+
+.simple-section.stack--center .rich-text {
+    margin-inline: auto;
+}

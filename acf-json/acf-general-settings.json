@@ -1,0 +1,213 @@
+[
+  {
+    "key": "group_d1_general_settings",
+    "title": "General Settings",
+    "fields": [
+      {
+        "key": "field_d1_tab_header",
+        "label": "Header",
+        "name": "",
+        "type": "tab",
+        "placement": "left"
+      },
+      {
+        "key": "field_d1_header_logo_position",
+        "label": "Logo Position",
+        "name": "header_logo_position",
+        "type": "select",
+        "instructions": "",
+        "choices": {
+          "left": "Left",
+          "center": "Center"
+        },
+        "default_value": "left",
+        "return_format": "value"
+      },
+      {
+        "key": "field_d1_header_menu_position",
+        "label": "Menu Position",
+        "name": "header_menu_position",
+        "type": "select",
+        "instructions": "",
+        "choices": {
+          "center": "Center",
+          "right": "Right"
+        },
+        "default_value": "right",
+        "return_format": "value"
+      },
+      {
+        "key": "field_d1_header_sticky",
+        "label": "Sticky Header",
+        "name": "header_sticky",
+        "type": "true_false",
+        "instructions": "Keep header fixed at top when scrolling.",
+        "ui": 1,
+        "default_value": 1
+      },
+      {
+        "key": "field_d1_header_phone",
+        "label": "Phone Number",
+        "name": "header_phone",
+        "type": "text",
+        "instructions": "Displayed in header. Leave empty to hide."
+      },
+      {
+        "key": "field_d1_header_cta",
+        "label": "CTA Button",
+        "name": "header_cta",
+        "type": "link",
+        "instructions": "Call-to-action button in header.",
+        "return_format": "array"
+      },
+      {
+        "key": "field_d1_tab_footer",
+        "label": "Footer",
+        "name": "",
+        "type": "tab",
+        "placement": "left"
+      },
+      {
+        "key": "field_d1_footer_logo",
+        "label": "Footer Logo",
+        "name": "footer_logo",
+        "type": "image",
+        "instructions": "Optional. Uses site logo if empty.",
+        "return_format": "array",
+        "preview_size": "medium",
+        "library": "all"
+      },
+      {
+        "key": "field_d1_footer_tagline",
+        "label": "Tagline",
+        "name": "footer_tagline",
+        "type": "text",
+        "instructions": "Short text below footer logo."
+      },
+      {
+        "key": "field_d1_footer_copyright",
+        "label": "Copyright Text",
+        "name": "footer_copyright",
+        "type": "text",
+        "instructions": "Use {year} for current year. Example: © {year} Company Name",
+        "default_value": "© {year} All rights reserved."
+      },
+      {
+        "key": "field_d1_tab_contact",
+        "label": "Contact Info",
+        "name": "",
+        "type": "tab",
+        "placement": "left"
+      },
+      {
+        "key": "field_d1_company_name",
+        "label": "Company Name",
+        "name": "company_name",
+        "type": "text"
+      },
+      {
+        "key": "field_d1_company_address",
+        "label": "Address",
+        "name": "company_address",
+        "type": "textarea",
+        "rows": 3,
+        "new_lines": "br"
+      },
+      {
+        "key": "field_d1_company_phone",
+        "label": "Phone",
+        "name": "company_phone",
+        "type": "text"
+      },
+      {
+        "key": "field_d1_company_email",
+        "label": "Email",
+        "name": "company_email",
+        "type": "email"
+      },
+      {
+        "key": "field_d1_tab_social",
+        "label": "Social Links",
+        "name": "",
+        "type": "tab",
+        "placement": "left"
+      },
+      {
+        "key": "field_d1_social_facebook",
+        "label": "Facebook URL",
+        "name": "social_facebook",
+        "type": "url"
+      },
+      {
+        "key": "field_d1_social_instagram",
+        "label": "Instagram URL",
+        "name": "social_instagram",
+        "type": "url"
+      },
+      {
+        "key": "field_d1_social_linkedin",
+        "label": "LinkedIn URL",
+        "name": "social_linkedin",
+        "type": "url"
+      },
+      {
+        "key": "field_d1_social_youtube",
+        "label": "YouTube URL",
+        "name": "social_youtube",
+        "type": "url"
+      },
+      {
+        "key": "field_d1_social_x",
+        "label": "X (Twitter) URL",
+        "name": "social_x",
+        "type": "url"
+      },
+      {
+        "key": "field_d1_tab_scripts",
+        "label": "Scripts",
+        "name": "",
+        "type": "tab",
+        "placement": "left"
+      },
+      {
+        "key": "field_d1_head_scripts",
+        "label": "Head Scripts",
+        "name": "head_scripts",
+        "type": "textarea",
+        "instructions": "Code added before </head>. Use for analytics, fonts, etc.",
+        "rows": 6
+      },
+      {
+        "key": "field_d1_body_scripts",
+        "label": "Body Scripts",
+        "name": "body_scripts",
+        "type": "textarea",
+        "instructions": "Code added after opening <body> tag.",
+        "rows": 6
+      },
+      {
+        "key": "field_d1_footer_scripts",
+        "label": "Footer Scripts",
+        "name": "footer_scripts",
+        "type": "textarea",
+        "instructions": "Code added before </body>.",
+        "rows": 6
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "options_page",
+          "operator": "==",
+          "value": "d1-general-settings"
+        }
+      ]
+    ],
+    "active": true,
+    "show_in_rest": 0,
+    "menu_order": 0,
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label"
+  }
+]
