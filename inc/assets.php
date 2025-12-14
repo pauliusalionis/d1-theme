@@ -8,11 +8,19 @@
 add_action( 'wp_enqueue_scripts', 'd1_enqueue_assets' );
 
 function d1_enqueue_assets() {
-    // Foundation CSS
+    // Foundation CSS (core variables and utilities)
     wp_enqueue_style(
         'd1-foundation',
         D1_URI . '/assets/css/foundation.css',
         array(),
+        D1_VERSION
+    );
+
+    // Header CSS
+    wp_enqueue_style(
+        'd1-header',
+        D1_URI . '/assets/css/header.css',
+        array( 'd1-foundation' ),
         D1_VERSION
     );
 
