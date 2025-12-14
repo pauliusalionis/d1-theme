@@ -25,8 +25,12 @@ function d1_setup() {
 
     // Register menus
     register_nav_menus( array(
-        'primary' => __( 'Primary Menu', 'd1' ),
-        'footer'  => __( 'Footer Menu', 'd1' ),
+        'primary'      => __( 'Primary Menu', 'd1' ),
+        'footer'       => __( 'Footer Menu', 'd1' ),
+        'footer_col_1' => __( 'Footer Column 1', 'd1' ),
+        'footer_col_2' => __( 'Footer Column 2', 'd1' ),
+        'footer_col_3' => __( 'Footer Column 3', 'd1' ),
+        'footer_bottom' => __( 'Footer Bottom', 'd1' ),
     ) );
 
     // Load text domain
