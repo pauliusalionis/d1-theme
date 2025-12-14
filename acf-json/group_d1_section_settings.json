@@ -124,7 +124,9 @@
             "choices": {
                 "narrow": "Narrow",
                 "default": "Normal",
-                "wide": "Wide"
+                "wide": "Wide",
+                "full-width": "Full width",
+                "full-screen": "Full screen"
             },
             "default_value": "default",
             "return_format": "value",
@@ -157,5 +159,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1765667203
+    "modified": 1765676202
 }

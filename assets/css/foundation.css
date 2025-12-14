@@ -124,6 +124,11 @@ body {
 }
 
 /* Full width - edge to edge, no container padding */
+.section--width-full {
+    padding-inline: 0;
+    padding-block: 0;
+}
+
 .section--width-full .container {
     max-width: none;
     padding-inline: 0;
@@ -135,6 +140,8 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
+    padding-inline: 0;
+    padding-block: 0;
 }
 
 .section--width-screen .container {

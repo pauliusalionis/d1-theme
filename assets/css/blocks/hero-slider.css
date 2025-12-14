@@ -32,6 +32,10 @@
     padding: var(--space-8) var(--space-4);
 }
 
+.section--width-screen .hero-slider__slide {
+    min-height: 100vh;
+}
+
 @media (min-width: 768px) {
     .hero-slider__slide {
         min-height: 70vh;
