@@ -113,12 +113,34 @@ body {
     padding-block: calc(var(--section-padding-y) * 1.3);
 }
 
+/* Narrow width - tight content */
 .section--width-narrow .container {
     max-width: 50rem;
 }
 
+/* Wide width - no max-width but keeps padding */
 .section--width-wide .container {
     max-width: none;
+}
+
+/* Full width - edge to edge, no container padding */
+.section--width-full .container {
+    max-width: none;
+    padding-inline: 0;
+    width: 100%;
+}
+
+/* Full screen - edge to edge + full viewport height */
+.section--width-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.section--width-screen .container {
+    max-width: none;
+    padding-inline: 0;
+    width: 100%;
 }
 
 /* Dark/brand text overrides */

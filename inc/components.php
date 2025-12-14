@@ -74,6 +74,13 @@ function d1_section_open( $args = array() ) {
         case 'wide':
             $classes[] = 'section--width-wide';
             break;
+        case 'full-width':
+            $classes[] = 'section--width-full';
+            break;
+        case 'full-screen':
+            $classes[] = 'section--width-screen';
+            break;
+        // 'default' is boxed, no additional class needed
     }
 
     // Block alignment

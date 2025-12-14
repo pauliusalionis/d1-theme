@@ -1,11 +1,69 @@
 /*
  * Block: Simple Section
+ * Enhanced with smooth entrance animations
  */
+
+.simple-section .heading-group {
+    animation: section-fade-in 0.8s ease-out;
+}
+
+.simple-section .heading-group__eyebrow {
+    animation: section-fade-in 0.6s ease-out;
+}
+
+.simple-section .heading-group__title {
+    animation: section-fade-in-up 0.8s ease-out 0.1s backwards;
+}
+
+.simple-section .heading-group__subtitle {
+    animation: section-fade-in-up 1s ease-out 0.2s backwards;
+}
 
 .simple-section .rich-text {
     max-width: 50rem;
+    animation: section-fade-in-up 1.2s ease-out 0.3s backwards;
 }
 
 .simple-section.stack--center .rich-text {
     margin-inline: auto;
+}
+
+.simple-section .cluster {
+    animation: section-fade-in-up 1.4s ease-out 0.4s backwards;
+}
+
+/* Animations */
+@keyframes section-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes section-fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =============================================
+   ACCESSIBILITY
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .simple-section .heading-group,
+    .simple-section .heading-group__eyebrow,
+    .simple-section .heading-group__title,
+    .simple-section .heading-group__subtitle,
+    .simple-section .rich-text,
+    .simple-section .cluster {
+        animation: none !important;
+    }
 }

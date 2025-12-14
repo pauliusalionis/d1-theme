@@ -1,15 +1,112 @@
 /*
  * Block: CTA Section
+ * Enhanced with attention-grabbing animations
  */
+
+.cta-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section .heading-group {
+    animation: cta-fade-in-scale 0.8s ease-out;
+}
 
 .cta-section .heading-group__title {
     font-size: var(--fs-3xl);
 }
 
+.cta-section .heading-group__eyebrow {
+    animation: cta-fade-in 0.6s ease-out;
+}
+
 .cta-section .rich-text {
     max-width: 36rem;
+    animation: cta-fade-in 1s ease-out 0.2s backwards;
 }
 
 .cta-section.stack--center .rich-text {
     margin-inline: auto;
+}
+
+.cta-section .cluster {
+    animation: cta-fade-in-up 1.2s ease-out 0.4s backwards;
+}
+
+/* Enhanced button effects for CTA */
+.cta-section .btn {
+    position: relative;
+    transition: all var(--transition-base);
+}
+
+.cta-section .btn--primary {
+    animation: subtle-pulse 2s ease-in-out infinite;
+}
+
+.cta-section .btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cta-section .btn:active {
+    transform: translateY(0) scale(1);
+}
+
+/* Animations */
+@keyframes cta-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes cta-fade-in-scale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes cta-fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes subtle-pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
+    }
+}
+
+/* =============================================
+   ACCESSIBILITY
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .cta-section .heading-group,
+    .cta-section .heading-group__eyebrow,
+    .cta-section .rich-text,
+    .cta-section .cluster,
+    .cta-section .btn--primary {
+        animation: none !important;
+    }
+
+    .cta-section .btn:hover {
+        transform: none;
+    }
 }
