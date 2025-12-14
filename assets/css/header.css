@@ -35,10 +35,32 @@
   overflow: visible; /* allow shadow */
 }
 
+/* =============================================
+   HEADER LAYOUT OPTIONS
+   ============================================= */
+
+/* Full width - no margins, no max-width */
 .site-header.full-width .container {
+  margin-inline: 0px;
+  max-width: none;
+  width: 100%;
+}
+
+.site-header.full-width.site-header--sticky .site-header__inner {
+  margin-top: 0px;
+}
+
+/* Boxed - centered with max-width */
+.site-header.boxed .container {
+  margin-inline: auto;
+  max-width: var(--container-width);
+}
+
+/* Boxed wide - gutters on sides */
+.site-header.boxed-wide .container {
   margin-inline: var(--gutter);
   max-width: none;
-  width: calc(100% - var(--gutter));
+  width: calc(100% - (var(--gutter) * 2));
 }
 
 .site-header--sticky {

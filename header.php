@@ -20,6 +20,7 @@ $body_scripts = $has_acf ? (string) get_field('body_scripts', 'option') : '';
 // NEW options you want (safe defaults if fields not created yet)
 $drawer_side = $has_acf ? (get_field('header_drawer_position', 'option') ?: 'right') : 'right'; // right|left
 $drawer_on_desktop = $has_acf ? (bool) get_field('header_drawer_desktop', 'option') : false;     // true|false
+$header_layout = $has_acf ? (get_field('header_layout', 'option') ?: 'boxed-wide') : 'boxed-wide'; // full-width|boxed|boxed-wide
 
 // Header classes
 $header_classes = array(
@@ -27,6 +28,7 @@ $header_classes = array(
 	$is_sticky ? 'site-header--sticky' : '',
 	'site-header--logo-' . sanitize_html_class($logo_pos),
 	'site-header--menu-' . sanitize_html_class($menu_pos),
+	sanitize_html_class($header_layout),
 );
 $header_classes = trim(implode(' ', array_filter($header_classes)));
 
