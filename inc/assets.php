@@ -16,6 +16,14 @@ function d1_enqueue_assets() {
         D1_VERSION
     );
 
+    // Footer CSS
+    wp_enqueue_style(
+        'd1-footer',
+        D1_URI . '/assets/css/footer.css',
+        array( 'd1-foundation' ),
+        D1_VERSION
+    );
+
     // Main JS
     wp_enqueue_script(
         'd1-main',
