@@ -125,13 +125,12 @@ body {
 
 /* Full width - edge to edge, no container padding */
 .section--width-full {
-    padding-inline: 0;
-    padding-block: 0;
+    padding-inline: var(--gutter);
 }
 
 .section--width-full .container {
     max-width: none;
-    padding-inline: 0;
+    padding-inline: var(--gutter);
     width: 100%;
 }
 
@@ -140,13 +139,14 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding-inline: 0;
+    padding-inline: var(--gutter);
     padding-block: 0;
+    justify-content: center;
 }
 
 .section--width-screen .container {
     max-width: none;
-    padding-inline: 0;
+    padding-inline: var(--gutter);
     width: 100%;
 }
 

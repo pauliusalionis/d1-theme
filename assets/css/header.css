@@ -76,6 +76,17 @@
   margin-top: 10px;
 }
 
+.site-header--sticky .site-header__inner {
+  border-radius: var(--header-radius);
+
+  background: var(--header-bg);
+  border: 1px solid var(--header-border);
+  box-shadow: var(--header-shadow);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
 /* Ensure content doesn't hide behind fixed header */
 .site-header--sticky + .site-main section:first-child,
 .site-header--sticky ~ .site-main section:first-child {
@@ -93,7 +104,7 @@
 }
 
 /* =============================================
-   HEADER INNER LAYOUT (GLASS BAR)
+   HEADER INNER LAYOUT
    ============================================= */
 
 .site-header__inner {
@@ -104,14 +115,7 @@
 
   min-height: var(--header-height);
   padding: 10px var(--header-pad-x);
-  border-radius: var(--header-radius);
 
-  background: var(--header-bg);
-  border: 1px solid var(--header-border);
-  box-shadow: var(--header-shadow);
-
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
 }
 
 /* Header background becomes slightly stronger once you scroll */

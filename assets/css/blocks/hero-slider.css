@@ -9,6 +9,17 @@
    HERO SLIDER WRAPPER
    ============================================= */
 
+.hero-slider.section--width-full,
+.hero-slider.section--width-screen {
+    padding-inline: 0;
+    padding-block: 0;
+}
+
+.hero-slider.section--width-full .container,
+.hero-slider.section--width-screen .container {
+    padding-inline: 0;
+}
+
 .hero-slider__wrapper {
     position: relative;
     width: 100%;
@@ -16,7 +27,6 @@
 
 .hero-slider__swiper {
     width: 100%;
-    min-height: 60vh;
 }
 
 /* =============================================
