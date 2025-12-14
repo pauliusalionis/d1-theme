@@ -151,6 +151,23 @@ function d1_register_acf_blocks() {
         ) );
     }
 
+    // Table
+    acf_register_block_type( array(
+        'name'            => 'table',
+        'title'           => __( 'Table', 'd1' ),
+        'description'     => __( 'Responsive table with flexible rows and columns.', 'd1' ),
+        'category'        => 'd1-blocks',
+        'icon'            => 'editor-table',
+        'keywords'        => array( 'table', 'data', 'grid', 'rows', 'columns' ),
+        'render_template' => D1_DIR . '/template-parts/blocks/table.php',
+        'enqueue_style'   => D1_URI . '/assets/css/blocks/table.css',
+        'supports'        => array(
+            'align'  => array( 'full', 'wide' ),
+            'anchor' => true,
+            'mode'   => true,
+        ),
+    ) );
+
     // Shortcode Block
     acf_register_block_type( array(
         'name'            => 'shortcode',
