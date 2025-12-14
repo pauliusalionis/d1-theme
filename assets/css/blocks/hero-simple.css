@@ -1,21 +1,58 @@
 /*
  * Block: Hero - Simple (default)
+ * Enhanced with smooth transitions and animations
  */
+
 .hero-simple .heading-group__title {
   font-size: var(--fs-4xl);
+  animation: hero-fade-in-up 0.8s ease-out;
 }
 
 .hero-simple .heading-group {
   margin-bottom: var(--space-4);
 }
 
+.hero-simple .heading-group__eyebrow {
+  animation: hero-fade-in 0.6s ease-out;
+}
+
+.hero-simple .heading-group__subtitle {
+  animation: hero-fade-in-up 1s ease-out 0.2s backwards;
+}
+
 .hero-simple .rich-text {
   font-size: var(--fs-lg);
   max-width: 38rem;
+  animation: hero-fade-in-up 1.2s ease-out 0.4s backwards;
 }
 
 .hero-simple .stack--center .rich-text {
   margin-inline: auto;
+}
+
+.hero-simple .cluster {
+  animation: hero-fade-in-up 1.4s ease-out 0.6s backwards;
+}
+
+/* Entrance animations */
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ------------------------------------------------
@@ -89,6 +126,14 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   margin-bottom: var(--space-4);
+  transition: all var(--transition-base);
+  animation: hero-fade-in 0.8s ease-out;
+}
+
+.hero-simple--alternative .heading-group__eyebrow:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
 }
 
 .hero-simple__alt-left {
@@ -124,4 +169,24 @@
 .hero-simple--alternative,
 .hero-simple--alternative .heading-group__title {
   color: #fff;
+}
+
+/* =============================================
+   ACCESSIBILITY
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-simple .heading-group__title,
+  .hero-simple .heading-group__eyebrow,
+  .hero-simple .heading-group__subtitle,
+  .hero-simple .rich-text,
+  .hero-simple .cluster,
+  .hero-simple--alternative .heading-group__eyebrow {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .hero-simple--alternative .heading-group__eyebrow:hover {
+    transform: none;
+  }
 }

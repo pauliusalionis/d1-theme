@@ -1,6 +1,11 @@
 /*
  * Block: FAQ Section
+ * Enhanced with smooth accordion animations and hover effects
  */
+
+.faq-section .heading-group {
+    animation: faq-fade-in 0.8s ease-out;
+}
 
 .faq-section .faq-list {
     max-width: 50rem;
@@ -8,4 +13,110 @@
 
 .faq-section.stack--center .faq-list {
     margin-inline: auto;
+}
+
+/* Staggered entrance for FAQ items */
+.faq__item {
+    opacity: 0;
+    animation: faq-fade-in-up 0.6s ease-out forwards;
+    transition: all var(--transition-base);
+}
+
+.faq__item:nth-child(1) { animation-delay: 0.1s; }
+.faq__item:nth-child(2) { animation-delay: 0.2s; }
+.faq__item:nth-child(3) { animation-delay: 0.3s; }
+.faq__item:nth-child(4) { animation-delay: 0.4s; }
+.faq__item:nth-child(5) { animation-delay: 0.5s; }
+.faq__item:nth-child(6) { animation-delay: 0.6s; }
+.faq__item:nth-child(7) { animation-delay: 0.7s; }
+.faq__item:nth-child(8) { animation-delay: 0.8s; }
+
+/* Hover effects */
+.faq__item:hover {
+    transform: translateX(4px);
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-soft);
+}
+
+.faq__item.is-open {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px var(--color-primary), var(--shadow-soft);
+}
+
+/* Question button enhancements */
+.faq__question {
+    transition: color var(--transition-base);
+}
+
+.faq__question:hover {
+    color: var(--color-primary);
+}
+
+/* Icon rotation enhancement */
+.faq__icon {
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), color var(--transition-base);
+}
+
+.faq__question:hover .faq__icon {
+    color: var(--color-primary);
+    transform: scale(1.1);
+}
+
+.faq__item.is-open .faq__icon {
+    transform: rotate(45deg);
+    color: var(--color-primary);
+}
+
+/* Answer panel smooth reveal */
+.js-accordion-panel {
+    transition: max-height 400ms cubic-bezier(0.4, 0, 0.2, 1), opacity 300ms ease-out;
+    opacity: 0;
+}
+
+.faq__item.is-open .js-accordion-panel {
+    opacity: 1;
+}
+
+/* Animations */
+@keyframes faq-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes faq-fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =============================================
+   ACCESSIBILITY
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .faq-section .heading-group,
+    .faq__item {
+        animation: none !important;
+        opacity: 1;
+    }
+
+    .faq__item:hover {
+        transform: none;
+    }
+
+    .faq__icon,
+    .js-accordion-panel {
+        transition: none !important;
+    }
 }
